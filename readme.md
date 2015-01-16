@@ -8,4 +8,32 @@ It's basically the `examples/` directory in a Laravel application.
 
 ### [Command Handling](https://github.com/qandidate-labs/broadway/tree/master/examples/command-handling)
 
-Route: ``
+* Route: `/command-handling`
+* Code: `Modules/Controllers/HomeController@index`
+
+### [Event Dispatcher](https://github.com/qandidate-labs/broadway/tree/master/examples/event-dispatcher)
+
+* Route: `/event-dispatcher`
+* Code: `Modules/Controllers/HomeController@eventDispatcher`
+
+### [Event Handling](https://github.com/qandidate-labs/broadway/tree/master/examples/event-handling)
+
+* Route: `/event-handling`
+* Code: `Modules/Controllers/HomeController@eventHandling`
+
+### [Event sourced child entity](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-child-entity)
+
+* Route: n/a
+* Code: `Modules/Parts` 
+* Tests: `Tests/Parts/`
+
+### [Event sourced domain](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-domain-with-tests)
+
+* Route: n/a
+* Code: *coming soon*
+* Tests: *coming soon*
+
+### [Serializer](https://github.com/qandidate-labs/broadway/blob/master/examples/serializer/serializer.php)
+
+* Route: n/a
+* Code: *coming soon*
