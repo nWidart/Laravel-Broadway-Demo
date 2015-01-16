@@ -8,9 +8,11 @@ use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Commands\RenameManufacturerForPartCommand;
+use Modules\Parts\Entities\PartId;
 use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 use Modules\Parts\Events\PartWasManufacturedEvent;
 use Modules\Parts\Repositories\PartRepository;
+use Rhumsaa\Uuid\Uuid;
 
 class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
 {
@@ -44,7 +46,7 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     public function it_can_manufacture()
     {
-        $id = $this->generator->generate();
+        $id = PartId::generate();
         $this->scenario
             ->withAggregateId($id)
             ->given([])
@@ -57,7 +59,7 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     public function it_can_rename_manufacturer()
     {
-        $id = $this->generator->generate();
+        $id = PartId::generate();
         $this->scenario
             ->withAggregateId($id)
             ->given([new PartWasManufacturedEvent($id, 'acme', 'Acme, Inc')])
@@ -70,7 +72,7 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     public function it_does_not_rename_manufacturer_to_the_same_name()
     {
-        $id = $this->generator->generate();
+        $id = PartId::generate();
         $this->scenario
             ->withAggregateId($id)
             ->given([
