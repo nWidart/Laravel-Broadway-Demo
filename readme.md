@@ -23,17 +23,17 @@ It's basically the `examples/` directory in a Laravel application.
 
 ### [Event sourced child entity](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-child-entity)
 
-* Route: n/a
+* Route: `n/a`
 * Code: `Modules/Parts` 
 * Tests: `Tests/Parts/`
 
 ### [Event sourced domain](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-domain-with-tests)
 
-* Route: n/a
+* Route: `n/a`
 * Code: *coming soon*
 * Tests: *coming soon*
 
 ### [Serializer](https://github.com/qandidate-labs/broadway/blob/master/examples/serializer/serializer.php)
 
-* Route: n/a
+* Route: *coming soon*
 * Code: *coming soon*
