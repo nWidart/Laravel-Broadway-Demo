@@ -14,7 +14,7 @@ class Part extends EventSourcedAggregateRoot
      * @ORM\Id
      * @ORM\Column(type="string")
      */
-    private $partId;
+    private $id;
     /**
      * @ORM\ManyToOne(targetEntity="Modules\Parts\Entities\Manufacturer", inversedBy="partId")
      **/
@@ -42,7 +42,7 @@ class Part extends EventSourcedAggregateRoot
      */
     public function getAggregateRootId()
     {
-        return $this->partId;
+        return $this->id;
     }
 
     public function renameManufacturer($manufacturerName)

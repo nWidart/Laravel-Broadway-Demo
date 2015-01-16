@@ -18,17 +18,17 @@ class Manufacturer extends EventSourcedEntity
      * @ORM\Id
      * @ORM\Column(type="string")
      */
-    private $manufacturerId;
+    private $id;
     /**
      * @ORM\Id
      * @ORM\Column(type="string")
      */
     private $manufacturerName;
 
-    public function __construct($partId, $manufacturerId, $manufacturerName)
+    public function __construct($partId, $id, $manufacturerName)
     {
         $this->partId = $partId;
-        $this->manufacturerId = $manufacturerId;
+        $this->id = $id;
         $this->manufacturerName = $manufacturerName;
     }
 
