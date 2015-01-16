@@ -14,7 +14,9 @@ class Part extends EventSourcedAggregateRoot
      * @ORM\Column(type="string")
      */
     private $partId;
-
+    /**
+     * @ORM\ManyToOne(targetEntity="Modules\Parts\Entities\Manufacturer", inversedBy="part")
+     **/
     private $manufacturer;
 
     /**
