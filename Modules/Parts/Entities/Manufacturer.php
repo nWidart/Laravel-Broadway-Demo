@@ -1,6 +1,7 @@
 <?php namespace Modules\Parts\Entities;
 
 use Doctrine\ORM\Mapping as ORM;
+use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 
 class Manufacturer
 {
@@ -18,4 +19,27 @@ class Manufacturer
      * @ORM\Column(type="string")
      */
     private $manufacturerName;
+
+    public function __construct($partId, $manufacturerId, $manufacturerName)
+    {
+        $this->partId = $partId;
+        $this->manufacturerId = $manufacturerId;
+        $this->manufacturerName = $manufacturerName;
+    }
+
+    public function rename($manufacturerName)
+    {
+        if ($this->manufacturerName === $manufacturerName) {
+            // If the name is not actually different we do not need to do
+            // anything here.
+            return;
+        }
+        // This event may also be handled by the aggregate root.
+        $this->apply(new PartManufacturerWasRenamedEvent($this->partId, $manufacturerName));
+    }
+
+    protected function applyPartManufacturerWasRenamedEvent(PartManufacturerWasRenamedEvent $event)
+    {
+        $this->manufacturerName = $event->manufacturerName;
+    }
 }
