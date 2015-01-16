@@ -7,7 +7,7 @@ class Manufacturer
     /**
      * @ORM\OneToMany(targetEntity="Modules\Parts\Entities\Part", mappedBy="manufacturer")
      **/
-    private $part;
+    private $partId;
     /**
      * @ORM\Id
      * @ORM\Column(type="string")
