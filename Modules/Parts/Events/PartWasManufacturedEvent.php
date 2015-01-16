@@ -1,6 +1,5 @@
 <?php namespace Modules\Parts\Events;
 
-use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
 
 class PartWasManufacturedEvent
@@ -9,7 +8,7 @@ class PartWasManufacturedEvent
     public $manufacturerId;
     public $manufacturerName;
 
-    public function __construct($partId, $manufacturerId, $manufacturerName)
+    public function __construct(PartId $partId, $manufacturerId, $manufacturerName)
     {
         $this->partId = $partId;
         $this->manufacturerId = $manufacturerId;
