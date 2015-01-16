@@ -4,6 +4,10 @@ use Broadway\EventSourcing\EventSourcedEntity;
 use Doctrine\ORM\Mapping as ORM;
 use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="manufacturers")
+ */
 class Manufacturer extends EventSourcedEntity
 {
     /**
