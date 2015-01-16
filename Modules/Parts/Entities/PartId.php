@@ -2,6 +2,7 @@
 
 use Modules\Core\Domain\Identifier;
 use Modules\Core\Domain\UuidIdentifier;
+use Rhumsaa\Uuid\Uuid;
 
 class PartId extends UuidIdentifier implements Identifier
 {
