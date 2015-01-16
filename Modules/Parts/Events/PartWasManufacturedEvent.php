@@ -9,7 +9,7 @@ class PartWasManufacturedEvent
     public $manufacturerId;
     public $manufacturerName;
 
-    public function __construct(PartId $partId, ManufacturerId $manufacturerId, $manufacturerName)
+    public function __construct($partId, $manufacturerId, $manufacturerName)
     {
         $this->partId = $partId;
         $this->manufacturerId = $manufacturerId;
