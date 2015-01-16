@@ -1,4 +1,4 @@
-<?php namespace Asgard\Application;
+<?php namespace Asgard\Tests\Parts\Application;
 
 use Broadway\CommandHandling\CommandHandlerInterface;
 use Broadway\CommandHandling\Testing\CommandHandlerScenarioTestCase;

@@ -1,4 +1,4 @@
-<?php namespace Asgard\Domain\Entity;
+<?php namespace Asgard\Tests\Parts\Domain\Entity;
 
 use Modules\Parts\Entities\ManufacturerId;
 use Rhumsaa\Uuid\Uuid;

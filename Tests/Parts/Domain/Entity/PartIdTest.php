@@ -1,4 +1,4 @@
-<?php namespace Asgard\Tests\Domain\Entity;
+<?php namespace Asgard\Tests\Parts\Domain\Entity;
 
 use Modules\Parts\Entities\PartId;
 use PHPUnit_Framework_TestCase;
