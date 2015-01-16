@@ -30,6 +30,12 @@
       "Modules\\": "Modules/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Asgard\\Tests\\": "Tests/",
+      "Asgard\\Stubs\\": "Stubs/"
+    }
+  },
   "scripts": {
     "post-install-cmd": [
       "php artisan clear-compiled",
