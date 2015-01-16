@@ -1,9 +1,10 @@
 <?php namespace Modules\Parts\Entities;
 
+use Broadway\EventSourcing\EventSourcedEntity;
 use Doctrine\ORM\Mapping as ORM;
 use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 
-class Manufacturer
+class Manufacturer extends EventSourcedEntity
 {
     /**
      * @ORM\OneToMany(targetEntity="Modules\Parts\Entities\Part", mappedBy="manufacturer")
