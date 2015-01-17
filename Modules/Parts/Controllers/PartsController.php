@@ -5,7 +5,6 @@ use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
-use Modules\Parts\Repositories\PartRepository;
 
 class PartsController extends \BaseController
 {
@@ -26,6 +25,8 @@ class PartsController extends \BaseController
 
         $command = new ManufacturePartCommand($partId, $manufacturerId, 'BWM');
 
+        //$handler = new PartCommandHandler();
+        //$this->commandBus->subscribe($handler);
         $this->commandBus->dispatch($command);
 
         dd('Something happened ?');
