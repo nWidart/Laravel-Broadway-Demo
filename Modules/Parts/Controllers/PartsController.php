@@ -7,6 +7,7 @@ class PartsController extends \BaseController
 {
     public function manufacture()
     {
+        dd('ok');
         // Setup command handler
         //$commandHandler = new PartCommandHandler(new PartRepository());
     }
