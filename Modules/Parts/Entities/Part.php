@@ -42,7 +42,7 @@ class Part extends EventSourcedAggregateRoot
      */
     public function getAggregateRootId()
     {
-        return $this->id;
+        return $this->partId;
     }
 
     public function renameManufacturer($manufacturerName)
