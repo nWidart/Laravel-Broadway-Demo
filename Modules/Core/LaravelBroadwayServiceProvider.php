@@ -4,7 +4,6 @@ use Broadway\CommandHandling\SimpleCommandBus;
 use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
 use Broadway\EventStore\DBALEventStore;
-use Broadway\EventStore\InMemoryEventStore;
 use Broadway\Serializer\SimpleInterfaceSerializer;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Doctrine\DBAL\Configuration;
