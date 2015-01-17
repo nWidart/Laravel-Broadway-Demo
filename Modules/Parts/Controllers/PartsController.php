@@ -5,6 +5,7 @@ use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
+use Modules\Parts\Repositories\PartRepository;
 
 class PartsController extends \BaseController
 {
@@ -12,10 +13,17 @@ class PartsController extends \BaseController
      * @var CommandBusInterface
      */
     private $commandBus;
+    /**
+     * @var PartRepository
+     */
+    private $partRepository;
 
-    public function __construct(CommandBusInterface $commandBus)
-    {
+    public function __construct(
+        CommandBusInterface $commandBus,
+        PartRepository $partRepository
+    ) {
         $this->commandBus = $commandBus;
+        $this->partRepository = $partRepository;
     }
 
     public function manufacture()
@@ -25,8 +33,8 @@ class PartsController extends \BaseController
 
         $command = new ManufacturePartCommand($partId, $manufacturerId, 'BWM');
 
-        //$handler = new PartCommandHandler();
-        //$this->commandBus->subscribe($handler);
+        $handler = new PartCommandHandler($this->partRepository);
+        $this->commandBus->subscribe($handler);
         $this->commandBus->dispatch($command);
 
         dd('Something happened ?');

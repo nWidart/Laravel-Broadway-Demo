@@ -43,7 +43,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         });
 
         $this->app->bind('Broadway\EventHandling\EventBusInterface', function () {
-            new SimpleEventBus();
+            return new SimpleEventBus();
         });
 
         // Binding the Part Repository
