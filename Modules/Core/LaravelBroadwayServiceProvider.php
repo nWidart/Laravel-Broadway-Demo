@@ -7,7 +7,7 @@ use Broadway\EventStore\DBALEventStore;
 use Broadway\EventStore\InMemoryEventStore;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Illuminate\Support\ServiceProvider;
-use Modules\Parts\Repositories\PartRepository;
+use Modules\Parts\Repositories\EventStorePartRepository;
 
 class LaravelBroadwayServiceProvider extends ServiceProvider
 {
@@ -50,7 +50,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         $this->app->bind('Broadway\Repository\RepositoryInterface', function ($app) {
             $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
             $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
-            return new PartRepository($eventStore, $eventBus);
+            return new EventStorePartRepository($eventStore, $eventBus);
         });
     }
 }

@@ -11,7 +11,7 @@ use Modules\Parts\Commands\RenameManufacturerForPartCommand;
 use Modules\Parts\Entities\PartId;
 use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 use Modules\Parts\Events\PartWasManufacturedEvent;
-use Modules\Parts\Repositories\PartRepository;
+use Modules\Parts\Repositories\EventStorePartRepository;
 use Rhumsaa\Uuid\Uuid;
 
 class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
@@ -36,7 +36,7 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     protected function createCommandHandler(EventStoreInterface $eventStore, EventBusInterface $eventBus)
     {
-        $repository = new PartRepository($eventStore, $eventBus);
+        $repository = new EventStorePartRepository($eventStore, $eventBus);
 
         return new PartCommandHandler($repository);
     }
