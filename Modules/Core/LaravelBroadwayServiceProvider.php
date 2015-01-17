@@ -2,8 +2,12 @@
 
 use Broadway\CommandHandling\SimpleCommandBus;
 use Broadway\EventDispatcher\EventDispatcher;
+use Broadway\EventHandling\SimpleEventBus;
+use Broadway\EventStore\DBALEventStore;
+use Broadway\EventStore\InMemoryEventStore;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Illuminate\Support\ServiceProvider;
+use Modules\Parts\Repositories\PartRepository;
 
 class LaravelBroadwayServiceProvider extends ServiceProvider
 {
@@ -27,6 +31,26 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         // Bind an event dispatcher
         $this->app->bindShared('Broadway\EventDispatcher\EventDispatcherInterface', function () {
             return new EventDispatcher();
+        });
+
+        $this->bindEventStorage();
+    }
+
+    private function bindEventStorage()
+    {
+        $this->app->bind('Broadway\EventStore\EventStoreInterface', function () {
+            return new InMemoryEventStore(); # Temporary Needs Broadway\EventStore\DBALEventStore
+        });
+
+        $this->app->bind('Broadway\EventHandling\EventBusInterface', function () {
+            new SimpleEventBus();
+        });
+
+        // Binding the Part Repository
+        $this->app->bind('Broadway\Repository\RepositoryInterface', function ($app) {
+            $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
+            $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+            return new PartRepository($eventStore, $eventBus);
         });
     }
 }
