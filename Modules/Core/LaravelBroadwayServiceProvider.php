@@ -39,7 +39,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
             $connectionParams['driver'] = "pdo_$driver";
 
             $connection = DriverManager::getConnection($connectionParams, $configuration);
-            //$dbalEventStore = new DBALEventStore($con);
+            //$dbalEventStore = new DBALEventStore($connection);
             return new InMemoryEventStore(); # Temporary Needs Broadway\EventStore\DBALEventStore
         });
 
