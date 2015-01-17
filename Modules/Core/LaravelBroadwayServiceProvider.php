@@ -9,7 +9,6 @@ use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
 use Illuminate\Support\ServiceProvider;
-use Modules\Parts\Repositories\EventStorePartRepository;
 
 class LaravelBroadwayServiceProvider extends ServiceProvider
 {
@@ -20,7 +19,6 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         $this->bindSerializers();
         $this->bindEventStorage();
         $this->bindMiscClasses();
-        $this->bindEventSourcedRepositories();
     }
 
     /**
@@ -81,19 +79,6 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         // Bind a Uui Generator
         $this->app->bind('Broadway\UuidGenerator\UuidGeneratorInterface', function () {
             return new Version4Generator();
-        });
-    }
-
-    /**
-     * Bind repositories (should be a separate SP)
-     */
-    private function bindEventSourcedRepositories()
-    {
-        // Binding the Part Repository
-        $this->app->bind('Modules\Parts\Repositories\PartRepository', function ($app) {
-            $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
-            $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
-            return new EventStorePartRepository($eventStore, $eventBus);
         });
     }
 

@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider',
         'Modules\Core\LaravelBroadwayServiceProvider',
+        'Modules\Parts\PartServiceProvider',
 	),
 
 	/*
