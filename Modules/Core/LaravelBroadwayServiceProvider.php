@@ -28,10 +28,17 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
 
     private function bindEventStorage()
     {
-        $this->app->bind('Broadway\EventStore\EventStoreInterface', function () {
-            $dbalConf = new Configuration();
-            $con = DriverManager::getConnection(['driver' => 'pdo_mysql'], $dbalConf);
-            //dd($con);
+        $this->app->bind('Broadway\EventStore\EventStoreInterface', function ($app) {
+            $configuration = new Configuration();
+
+            $driver = $app['config']->get('database.default');
+            $connectionParams = $app['config']->get("database.connections.{$driver}");
+            $connectionParams['dbname'] = $connectionParams['database'];
+            $connectionParams['user'] = $connectionParams['username'];
+            unset($connectionParams['database'], $connectionParams['username']);
+            $connectionParams['driver'] = "pdo_$driver";
+
+            $connection = DriverManager::getConnection($connectionParams, $configuration);
             //$dbalEventStore = new DBALEventStore($con);
             return new InMemoryEventStore(); # Temporary Needs Broadway\EventStore\DBALEventStore
         });
