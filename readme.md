@@ -23,7 +23,9 @@ It's basically the `examples/` directory in a Laravel application. When I'm feel
 
 ### [Event sourced child entity](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-child-entity)
 
-* Route: `n/a`
+* Route: 
+    * Write: `/parts/manufacture`
+    * Read: *todo*
 * Code: `Modules/Parts` 
 * Tests: `Tests/Parts/`
 
