@@ -3,7 +3,9 @@
 use Broadway\CommandHandling\SimpleCommandBus;
 use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
+use Broadway\EventStore\DBALEventStore;
 use Broadway\EventStore\InMemoryEventStore;
+use Broadway\Serializer\SimpleInterfaceSerializer;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
@@ -16,6 +18,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
     {
         $this->bindEventClasses();
         $this->bindCommandClasses();
+        $this->bindSerializers();
         $this->bindEventStorage();
         $this->bindMiscClasses();
         $this->bindEventSourcedRepositories();
@@ -46,6 +49,16 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
     }
 
     /**
+     * Bind the Serializer
+     */
+    private function bindSerializers()
+    {
+        $this->app->bind('Broadway\Serializer\SerializerInterface', function () {
+            return new SimpleInterfaceSerializer();
+        });
+    }
+
+    /**
      * Bind the event storage class
      */
     private function bindEventStorage()
@@ -55,8 +68,9 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
             $configuration = new Configuration();
 
             $connection = DriverManager::getConnection($connectionParams, $configuration);
-            //$dbalEventStore = new DBALEventStore($connection);
-            return new InMemoryEventStore(); # Temporary Needs Broadway\EventStore\DBALEventStore
+            $payloadSerializer = $app['Broadway\Serializer\SerializerInterface'];
+            $metadataSerializer = $app['Broadway\Serializer\SerializerInterface'];
+            return new DBALEventStore($connection, $payloadSerializer, $metadataSerializer, 'event_store');
         });
     }
 
