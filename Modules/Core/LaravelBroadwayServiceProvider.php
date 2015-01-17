@@ -3,7 +3,6 @@
 use Broadway\CommandHandling\SimpleCommandBus;
 use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
-use Broadway\EventStore\DBALEventStore;
 use Broadway\EventStore\InMemoryEventStore;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Doctrine\DBAL\Configuration;
@@ -13,34 +12,22 @@ use Modules\Parts\Repositories\EventStorePartRepository;
 
 class LaravelBroadwayServiceProvider extends ServiceProvider
 {
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
     public function register()
     {
         $this->bindEventClasses();
+        $this->bindCommandClasses();
         $this->bindEventStorage();
-        $this->bindEventSourcedRepositories();
         $this->bindMiscClasses();
+        $this->bindEventSourcedRepositories();
     }
 
-    private function bindEventStorage()
+    /**
+     * Bind all classes event related classes
+     */
+    private function bindEventClasses()
     {
-        $this->app->bind('Broadway\EventStore\EventStoreInterface', function ($app) {
-            $configuration = new Configuration();
-
-            $driver = $app['config']->get('database.default');
-            $connectionParams = $app['config']->get("database.connections.{$driver}");
-            $connectionParams['dbname'] = $connectionParams['database'];
-            $connectionParams['user'] = $connectionParams['username'];
-            unset($connectionParams['database'], $connectionParams['username']);
-            $connectionParams['driver'] = "pdo_$driver";
-
-            $connection = DriverManager::getConnection($connectionParams, $configuration);
-            //$dbalEventStore = new DBALEventStore($connection);
-            return new InMemoryEventStore(); # Temporary Needs Broadway\EventStore\DBALEventStore
+        $this->app->bind('Broadway\EventDispatcher\EventDispatcherInterface', function () {
+            return new EventDispatcher();
         });
 
         $this->app->bind('Broadway\EventHandling\EventBusInterface', function () {
@@ -48,6 +35,45 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * Bind all command related classes
+     */
+    private function bindCommandClasses()
+    {
+        $this->app->bind('Broadway\CommandHandling\CommandBusInterface', function () {
+            return new SimpleCommandBus();
+        });
+    }
+
+    /**
+     * Bind the event storage class
+     */
+    private function bindEventStorage()
+    {
+        $connectionParams = $this->getStorageConnectionParameters();
+        $this->app->bind('Broadway\EventStore\EventStoreInterface', function ($app) use ($connectionParams) {
+            $configuration = new Configuration();
+
+            $connection = DriverManager::getConnection($connectionParams, $configuration);
+            //$dbalEventStore = new DBALEventStore($connection);
+            return new InMemoryEventStore(); # Temporary Needs Broadway\EventStore\DBALEventStore
+        });
+    }
+
+    /**
+     * Bind miscellaneous helper classes
+     */
+    private function bindMiscClasses()
+    {
+        // Bind a Uui Generator
+        $this->app->bind('Broadway\UuidGenerator\UuidGeneratorInterface', function () {
+            return new Version4Generator();
+        });
+    }
+
+    /**
+     * Bind repositories (should be a separate SP)
+     */
     private function bindEventSourcedRepositories()
     {
         // Binding the Part Repository
@@ -58,24 +84,20 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         });
     }
 
-    private function bindEventClasses()
+    /**
+     * Make a connection parameters array based on the laravel configuration
+     * @return array
+     */
+    private function getStorageConnectionParameters()
     {
-        // Bind an event dispatcher
-        $this->app->bind('Broadway\EventDispatcher\EventDispatcherInterface', function () {
-            return new EventDispatcher();
-        });
+        $driver = $this->app['config']->get('database.default');
+        $connectionParams = $this->app['config']->get("database.connections.{$driver}");
 
-        // Bind a CommandBus
-        $this->app->bind('Broadway\CommandHandling\CommandBusInterface', function () {
-            return new SimpleCommandBus();
-        });
-    }
+        $connectionParams['dbname'] = $connectionParams['database'];
+        $connectionParams['user'] = $connectionParams['username'];
+        unset($connectionParams['database'], $connectionParams['username']);
+        $connectionParams['driver'] = "pdo_$driver";
 
-    private function bindMiscClasses()
-    {
-        // Bind a Uui Generator
-        $this->app->bind('Broadway\UuidGenerator\UuidGeneratorInterface', function () {
-            return new Version4Generator();
-        });
+        return $connectionParams;
     }
 }
