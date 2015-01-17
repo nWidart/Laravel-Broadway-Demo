@@ -6,7 +6,7 @@ use Broadway\EventSourcing\EventSourcingRepository;
 use Broadway\EventStore\EventStoreInterface;
 use Modules\Parts\Entities\Part;
 
-class EventStorePartRepository extends EventSourcingRepository
+class EventStorePartRepository extends EventSourcingRepository implements PartRepository
 {
     public function __construct(EventStoreInterface $eventStore, EventBusInterface $eventBus)
     {

@@ -47,7 +47,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         });
 
         // Binding the Part Repository
-        $this->app->bind('Broadway\Repository\RepositoryInterface', function ($app) {
+        $this->app->bind('Modules\Parts\Repositories\PartRepository', function ($app) {
             $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
             $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
             return new EventStorePartRepository($eventStore, $eventBus);
