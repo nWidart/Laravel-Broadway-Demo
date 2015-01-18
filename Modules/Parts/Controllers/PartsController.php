@@ -25,11 +25,11 @@ class PartsController extends \BaseController
 
     public function __construct(
         CommandBusInterface $commandBus,
-        EventStorePartRepository $EventStorePartRepository,
+        EventStorePartRepository $eventStorePartRepository,
         ReadModelPartRepository $readModelPartRepository
     ) {
         $this->commandBus = $commandBus;
-        $this->eventStorePartRepository = $EventStorePartRepository;
+        $this->eventStorePartRepository = $eventStorePartRepository;
         $this->readModelPartRepository = $readModelPartRepository;
     }
 
