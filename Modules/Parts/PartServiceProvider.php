@@ -55,8 +55,8 @@ class PartServiceProvider extends ServiceProvider
      */
     private function registerCommandSubscribers()
     {
-        $esRepository = $this->app['Modules\Parts\Repositories\EventStorePartRepository'];
-        $handler = new PartCommandHandler($esRepository);
+        $esPartRepository = $this->app['Modules\Parts\Repositories\EventStorePartRepository'];
+        $handler = new PartCommandHandler($esPartRepository);
         $this->app['Broadway\CommandHandling\CommandBusInterface']->subscribe($handler);
     }
 
