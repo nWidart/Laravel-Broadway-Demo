@@ -24,11 +24,10 @@ class PartServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bind repositories (should be a separate SP)
+     * Bind repositories
      */
     private function bindEventSourcedRepositories()
     {
-        // Binding the Part Repository
         $this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
             $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
             $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
