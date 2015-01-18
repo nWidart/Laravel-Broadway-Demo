@@ -1,6 +1,7 @@
 <?php namespace Modules\Parts\Controllers;
 
 use Broadway\CommandHandling\CommandBusInterface;
+use Broadway\EventHandling\EventBusInterface;
 use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Entities\ManufacturerId;
@@ -22,13 +23,19 @@ class PartsController extends \BaseController
      * @var ReadModelPartRepository
      */
     private $readModelPartRepository;
+    /**
+     * @var EventBusInterface
+     */
+    private $eventBus;
 
     public function __construct(
         CommandBusInterface $commandBus,
+        EventBusInterface $eventBus,
         EventStorePartRepository $eventStorePartRepository,
         ReadModelPartRepository $readModelPartRepository
     ) {
         $this->commandBus = $commandBus;
+        $this->eventBus = $eventBus;
         $this->eventStorePartRepository = $eventStorePartRepository;
         $this->readModelPartRepository = $readModelPartRepository;
     }
