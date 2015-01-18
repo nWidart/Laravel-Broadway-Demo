@@ -51,11 +51,6 @@ class PartsController extends \BaseController
         $command = new ManufacturePartCommand($partId, $manufacturerId, 'BMW');
         $this->commandBus->dispatch($command);
 
-        $metadata = new Metadata(['source' => 'example']);
-        $domainMessage = DomainMessage::recordNow($partId, 0, $metadata, new stdClass());
-        $domainEventStream = new DomainEventStream([$domainMessage]);
-        $this->eventBus->publish($domainEventStream);
-
         dd('Part was stored in event store');
     }
 
