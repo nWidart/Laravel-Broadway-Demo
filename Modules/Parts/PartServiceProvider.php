@@ -65,8 +65,8 @@ class PartServiceProvider extends ServiceProvider
      */
     private function registerEventSubscribers()
     {
-        $esPartRepository = $this->app['Modules\Parts\Repositories\EventStorePartRepository'];
-        $partsThatWereManufacturedProjector = new PartsThatWereManufacturedProjector($esPartRepository);
+        $repository = $this->app['Modules\Parts\Repositories\ReadModelPartRepository'];
+        $partsThatWereManufacturedProjector = new PartsThatWereManufacturedProjector($repository);
         $this->app['Broadway\EventHandling\EventBusInterface']->subscribe($partsThatWereManufacturedProjector);
     }
 }
