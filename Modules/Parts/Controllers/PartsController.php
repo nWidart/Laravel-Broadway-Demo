@@ -31,7 +31,7 @@ class PartsController extends \BaseController
         $partId = PartId::generate();
         $manufacturerId = ManufacturerId::generate();
 
-        $command = new ManufacturePartCommand($partId, $manufacturerId, 'BWM');
+        $command = new ManufacturePartCommand($partId, $manufacturerId, 'BMW');
 
         $handler = new PartCommandHandler($this->partRepository);
         $this->commandBus->subscribe($handler);
