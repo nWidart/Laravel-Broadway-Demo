@@ -10,7 +10,8 @@
   "require": {
     "laravel/framework": "4.2.*",
     "mitchellvanw/laravel-doctrine": "~0.5",
-    "broadway/broadway": "~0.4"
+    "broadway/broadway": "~0.4",
+    "elasticsearch/elasticsearch": "~1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "4.0",
@@ -23,8 +24,7 @@
       "app/controllers",
       "app/models",
       "app/database/migrations",
-      "app/database/seeds",
-      "app/tests/TestCase.php"
+      "app/database/seeds"
     ],
     "psr-4": {
       "Modules\\": "Modules/"
