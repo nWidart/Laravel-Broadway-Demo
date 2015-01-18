@@ -6,6 +6,7 @@ use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
 use Modules\Parts\Repositories\EventStorePartRepository;
+use Modules\Parts\Repositories\ReadModelPartRepository;
 
 class PartsController extends \BaseController
 {
@@ -17,13 +18,19 @@ class PartsController extends \BaseController
      * @var EventStorePartRepository
      */
     private $eventStorePartRepository;
+    /**
+     * @var ReadModelPartRepository
+     */
+    private $readModelPartRepository;
 
     public function __construct(
         CommandBusInterface $commandBus,
-        EventStorePartRepository $EventStorePartRepository
+        EventStorePartRepository $EventStorePartRepository,
+        ReadModelPartRepository $readModelPartRepository
     ) {
         $this->commandBus = $commandBus;
         $this->eventStorePartRepository = $EventStorePartRepository;
+        $this->readModelPartRepository = $readModelPartRepository;
     }
 
     public function manufacture()
