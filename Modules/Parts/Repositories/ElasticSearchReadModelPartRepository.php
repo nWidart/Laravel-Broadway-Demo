@@ -4,6 +4,7 @@ use Broadway\ReadModel\ElasticSearch\ElasticSearchRepository;
 use Broadway\Serializer\SerializerInterface;
 use Elasticsearch\Client;
 use Modules\Parts\Entities\Part;
+use Modules\Parts\ReadModel\PartsThatWereManufactured;
 
 class ElasticSearchReadModelPartRepository extends ElasticSearchRepository implements ReadModelPartRepository
 {
@@ -13,6 +14,6 @@ class ElasticSearchReadModelPartRepository extends ElasticSearchRepository imple
         array $notAnalyzedFields = array()
     )
     {
-        parent::__construct($client, $serializer, 'parts', Part::class, $notAnalyzedFields);
+        parent::__construct($client, $serializer, 'parts', PartsThatWereManufactured::class, $notAnalyzedFields);
     }
 }
