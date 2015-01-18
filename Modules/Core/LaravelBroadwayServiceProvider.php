@@ -1,6 +1,9 @@
 <?php namespace Modules\Core;
 
 use Broadway\CommandHandling\SimpleCommandBus;
+use Broadway\Domain\DomainEventStream;
+use Broadway\Domain\DomainMessage;
+use Broadway\Domain\Metadata;
 use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
 use Broadway\EventStore\DBALEventStore;
@@ -9,6 +12,7 @@ use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
 use Illuminate\Support\ServiceProvider;
+use stdClass;
 
 class LaravelBroadwayServiceProvider extends ServiceProvider
 {
@@ -33,6 +37,12 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         $this->app->bind('Broadway\EventHandling\EventBusInterface', function () {
             return new SimpleEventBus();
         });
+
+        // Testing ...
+        $metadata = new Metadata(['source' => 'example']);
+        $domainMessage = DomainMessage::recordNow(1, 0, $metadata, new stdClass());
+        $domainEventStream = new DomainEventStream([$domainMessage]);
+        $this->app['Broadway\EventHandling\EventBusInterface']->publish($domainEventStream);
     }
 
     /**
