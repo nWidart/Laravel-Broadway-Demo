@@ -56,6 +56,7 @@ class PartsController extends \BaseController
 
     public function manufacturedParts()
     {
-        dd('read model');
+        $part = $this->readModelPartRepository->find('1429ee5f-b6f8-4d42-9059-5f84d4bfc683');
+        dd('read model', $part);
     }
 }
