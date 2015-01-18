@@ -2,6 +2,7 @@
 
 use Elasticsearch\Client;
 use Illuminate\Support\ServiceProvider;
+use Modules\Parts\ReadModel\PartsThatWereManufacturedProjector;
 use Modules\Parts\Repositories\ElasticSearchReadModelPartRepository;
 use Modules\Parts\Repositories\MysqlEventStorePartRepository;
 
@@ -15,6 +16,11 @@ class PartServiceProvider extends ServiceProvider
     {
         $this->bindEventSourcedRepositories();
         $this->bindReadModelRepositories();
+
+        /** @var \Broadway\EventHandling\EventBusInterface $eventBus */
+        $eventBus = $this->app['Broadway\EventHandling\EventBusInterface'];
+        $partsThatWereManufacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
+        $eventBus->subscribe($partsThatWereManufacturedProjector);
     }
 
     /**
