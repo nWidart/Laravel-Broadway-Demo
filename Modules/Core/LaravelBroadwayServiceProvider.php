@@ -4,10 +4,12 @@ use Broadway\CommandHandling\SimpleCommandBus;
 use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
 use Broadway\EventStore\DBALEventStore;
+use Broadway\ReadModel\ElasticSearch\ElasticSearchRepository;
 use Broadway\Serializer\SimpleInterfaceSerializer;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
+use Elasticsearch\Client;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelBroadwayServiceProvider extends ServiceProvider
@@ -19,6 +21,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         $this->bindSerializers();
         $this->bindEventStorage();
         $this->bindMiscClasses();
+        $this->bindReadModelClasses();
     }
 
     /**
@@ -97,5 +100,18 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
         $connectionParams['driver'] = "pdo_$driver";
 
         return $connectionParams;
+    }
+
+    private function bindReadModelClasses()
+    {
+        $driver = $this->app['config']->get('broadway.read-model');
+        $config = $this->app['config']->get("broadway.read-model-connections.{$driver}");
+
+        $client = new Client($config['config']);
+
+        $this->app->bind('Broadway\ReadModel\RepositoryInterface', function ($app) use ($client, $config) {
+            $serializer = $app['Broadway\Serializer\SerializerInterface'];
+            return new ElasticSearchRepository($client, $serializer, $config['index'], 'class');
+        });
     }
 }
