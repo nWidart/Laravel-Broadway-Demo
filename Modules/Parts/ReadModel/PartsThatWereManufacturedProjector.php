@@ -2,7 +2,7 @@
 
 use Broadway\ReadModel\Projector;
 use Modules\Parts\Events\PartWasManufacturedEvent;
-use Modules\Parts\Repositories\EventStorePartRepository;
+use Modules\Parts\Repositories\ReadModelPartRepository;
 
 class PartsThatWereManufacturedProjector extends Projector
 {
@@ -11,13 +11,26 @@ class PartsThatWereManufacturedProjector extends Projector
      */
     private $repository;
 
-    public function __construct(EventStorePartRepository $eventStorePartRepository)
+    public function __construct(ReadModelPartRepository $repository)
     {
-        $this->repository = $eventStorePartRepository;
+        $this->repository = $repository;
     }
 
     public function applyPartWasManufacturedEvent(PartWasManufacturedEvent $event)
     {
-        dd('listened?', $event);
+        $readModel = $this->getReadModel($event->partId);
+
+    }
+
+    private function getReadModel($partId)
+    {
+        $partId = (string)$partId;
+        $readModel = $this->repository->find($partId);
+
+        if (null === $readModel) {
+            $readModel = new PartsThatWereManufactured($partId);
+        }
+
+        return $readModel;
     }
 }
