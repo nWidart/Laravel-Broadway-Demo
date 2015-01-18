@@ -53,4 +53,9 @@ class PartsController extends \BaseController
 
         dd('Something happened ?');
     }
+
+    public function manufacturedParts()
+    {
+        dd('read model');
+    }
 }

@@ -12,3 +12,4 @@ Route::get('/event-handling', 'Modules\Acme\Controllers\HomeController@eventHand
 |--------------------------------------------------------------------------
 */
 Route::get('/parts/manufacture', 'Modules\Parts\Controllers\PartsController@manufacture');
+Route::get('/parts/manufactured-parts', 'Modules\Parts\Controllers\PartsController@manufacturedParts');
