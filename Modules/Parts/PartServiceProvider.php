@@ -19,7 +19,7 @@ class PartServiceProvider extends ServiceProvider
 
         /** @var \Broadway\EventHandling\EventBusInterface $eventBus */
         $eventBus = $this->app['Broadway\EventHandling\EventBusInterface'];
-        $partsThatWereManufacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
+        $partsThatWereManufacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
         $eventBus->subscribe($partsThatWereManufacturedProjector);
     }
 

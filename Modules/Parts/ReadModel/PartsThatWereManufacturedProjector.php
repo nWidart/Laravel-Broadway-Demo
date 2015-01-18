@@ -2,7 +2,7 @@
 
 use Broadway\ReadModel\Projector;
 use Modules\Parts\Events\PartWasManufacturedEvent;
-use Modules\Parts\Repositories\ReadModelPartRepository;
+use Modules\Parts\Repositories\EventStorePartRepository;
 
 class PartsThatWereManufacturedProjector extends Projector
 {
@@ -11,9 +11,9 @@ class PartsThatWereManufacturedProjector extends Projector
      */
     private $repository;
 
-    public function __construct(ReadModelPartRepository $readModelPartRepository)
+    public function __construct(EventStorePartRepository $eventStorePartRepository)
     {
-        $this->repository = $readModelPartRepository;
+        $this->repository = $eventStorePartRepository;
     }
 
     public function applyPartWasManufactured(PartWasManufacturedEvent $event)
