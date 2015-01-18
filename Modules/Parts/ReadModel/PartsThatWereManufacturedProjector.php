@@ -1,8 +1,8 @@
 <?php namespace Modules\Parts\ReadModel;
 
 use Broadway\ReadModel\Projector;
-use Broadway\ReadModel\RepositoryInterface;
 use Modules\Parts\Events\PartWasManufacturedEvent;
+use Modules\Parts\Repositories\ReadModelPartRepository;
 
 class PartsThatWereManufacturedProjector extends Projector
 {
@@ -11,9 +11,9 @@ class PartsThatWereManufacturedProjector extends Projector
      */
     private $repository;
 
-    public function __construct(RepositoryInterface $repository)
+    public function __construct(ReadModelPartRepository $readModelPartRepository)
     {
-        $this->repository = $repository;
+        $this->repository = $readModelPartRepository;
     }
 
     public function applyPartWasManufactured(PartWasManufacturedEvent $event)
