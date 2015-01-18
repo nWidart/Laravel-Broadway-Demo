@@ -16,7 +16,7 @@ class PartsThatWereManufacturedProjector extends Projector
         $this->repository = $eventStorePartRepository;
     }
 
-    public function applyPartWasManufactured(PartWasManufacturedEvent $event)
+    public function applyPartWasManufacturedEvent(PartWasManufacturedEvent $event)
     {
         dd('listened?', $event);
     }
