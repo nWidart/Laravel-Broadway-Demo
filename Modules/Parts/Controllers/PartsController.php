@@ -5,7 +5,6 @@ use Broadway\Domain\DomainEventStream;
 use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
 use Broadway\EventHandling\EventBusInterface;
-use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
@@ -50,15 +49,12 @@ class PartsController extends \BaseController
         $manufacturerId = ManufacturerId::generate();
 
         $command = new ManufacturePartCommand($partId, $manufacturerId, 'BMW');
-
-        $handler = new PartCommandHandler($this->eventStorePartRepository);
-        $this->commandBus->subscribe($handler);
         $this->commandBus->dispatch($command);
 
-//        $metadata = new Metadata(['source' => 'example']);
-//        $domainMessage = DomainMessage::recordNow($partId, 0, $metadata, new stdClass());
-//        $domainEventStream = new DomainEventStream([$domainMessage]);
-//        $this->eventBus->publish($domainEventStream);
+        $metadata = new Metadata(['source' => 'example']);
+        $domainMessage = DomainMessage::recordNow($partId, 0, $metadata, new stdClass());
+        $domainEventStream = new DomainEventStream([$domainMessage]);
+        $this->eventBus->publish($domainEventStream);
 
         dd('Part was stored in event store');
     }
