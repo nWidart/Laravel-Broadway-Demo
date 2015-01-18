@@ -1,16 +1,12 @@
 <?php namespace Modules\Parts\Controllers;
 
 use Broadway\CommandHandling\CommandBusInterface;
-use Broadway\Domain\DomainEventStream;
-use Broadway\Domain\DomainMessage;
-use Broadway\Domain\Metadata;
 use Broadway\EventHandling\EventBusInterface;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
 use Modules\Parts\Repositories\EventStorePartRepository;
 use Modules\Parts\Repositories\ReadModelPartRepository;
-use stdClass;
 
 class PartsController extends \BaseController
 {
