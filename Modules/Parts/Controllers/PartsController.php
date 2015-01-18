@@ -51,7 +51,7 @@ class PartsController extends \BaseController
         $this->commandBus->subscribe($handler);
         $this->commandBus->dispatch($command);
 
-        dd('Something happened ?');
+        dd('Part was stored in event store');
     }
 
     public function manufacturedParts()
