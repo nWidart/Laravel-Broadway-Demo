@@ -1,7 +1,7 @@
 <?php namespace Modules\Parts;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Parts\Repositories\EventStorePartRepository;
+use Modules\Parts\Repositories\MysqlEventStorePartRepository;
 
 class PartServiceProvider extends ServiceProvider
 {
@@ -23,7 +23,7 @@ class PartServiceProvider extends ServiceProvider
         $this->app->bind('Modules\Parts\Repositories\PartRepository', function ($app) {
             $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
             $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
-            return new EventStorePartRepository($eventStore, $eventBus);
+            return new MysqlEventStorePartRepository($eventStore, $eventBus);
         });
     }
 }

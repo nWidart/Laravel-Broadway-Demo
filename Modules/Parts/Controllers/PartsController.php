@@ -5,7 +5,7 @@ use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
-use Modules\Parts\Repositories\PartRepository;
+use Modules\Parts\Repositories\EventStorePartRepository;
 
 class PartsController extends \BaseController
 {
@@ -14,13 +14,13 @@ class PartsController extends \BaseController
      */
     private $commandBus;
     /**
-     * @var PartRepository
+     * @var EventStorePartRepository
      */
     private $partRepository;
 
     public function __construct(
         CommandBusInterface $commandBus,
-        PartRepository $partRepository
+        EventStorePartRepository $partRepository
     ) {
         $this->commandBus = $commandBus;
         $this->partRepository = $partRepository;
