@@ -20,7 +20,7 @@ class PartServiceProvider extends ServiceProvider
     private function bindEventSourcedRepositories()
     {
         // Binding the Part Repository
-        $this->app->bind('Modules\Parts\Repositories\PartRepository', function ($app) {
+        $this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
             $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
             $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
             return new MysqlEventStorePartRepository($eventStore, $eventBus);
