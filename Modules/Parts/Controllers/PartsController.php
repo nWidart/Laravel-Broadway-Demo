@@ -2,7 +2,6 @@
 
 use Broadway\CommandHandling\CommandBusInterface;
 use Broadway\EventHandling\EventBusInterface;
-use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
@@ -46,9 +45,6 @@ class PartsController extends \BaseController
         $manufacturerId = ManufacturerId::generate();
 
         $command = new ManufacturePartCommand($partId, $manufacturerId, 'BMW');
-
-        $handler = new PartCommandHandler($this->eventStorePartRepository);
-        $this->commandBus->subscribe($handler);
         $this->commandBus->dispatch($command);
 
         dd('Part was stored in event store');

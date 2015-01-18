@@ -2,6 +2,7 @@
 
 use Elasticsearch\Client;
 use Illuminate\Support\ServiceProvider;
+use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\ReadModel\PartsThatWereManufacturedProjector;
 use Modules\Parts\Repositories\ElasticSearchReadModelPartRepository;
 use Modules\Parts\Repositories\MysqlEventStorePartRepository;
@@ -17,10 +18,8 @@ class PartServiceProvider extends ServiceProvider
         $this->bindEventSourcedRepositories();
         $this->bindReadModelRepositories();
 
-        /** @var \Broadway\EventHandling\EventBusInterface $eventBus */
-        $eventBus = $this->app['Broadway\EventHandling\EventBusInterface'];
-        $partsThatWereManufacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
-        $eventBus->subscribe($partsThatWereManufacturedProjector);
+        $this->registerCommandSubscribers();
+        $this->registerEventSubscribers();
     }
 
     /**
@@ -35,6 +34,9 @@ class PartServiceProvider extends ServiceProvider
         });
     }
 
+    /**
+     * Bind the read model repositories in the IoC container
+     */
     private function bindReadModelRepositories()
     {
         $driver = $this->app['config']->get('broadway.read-model');
@@ -46,5 +48,25 @@ class PartServiceProvider extends ServiceProvider
             $serializer = $app['Broadway\Serializer\SerializerInterface'];
             return new ElasticSearchReadModelPartRepository($client, $serializer);
         });
+    }
+
+    /**
+     * Register the command handlers on the command bus
+     */
+    private function registerCommandSubscribers()
+    {
+        $esRepository = $this->app['Modules\Parts\Repositories\EventStorePartRepository'];
+        $handler = new PartCommandHandler($esRepository);
+        $this->app['Broadway\CommandHandling\CommandBusInterface']->subscribe($handler);
+    }
+
+    /**
+     * Register the event listeners on the event bus
+     */
+    private function registerEventSubscribers()
+    {
+        $esPartRepository = $this->app['Modules\Parts\Repositories\EventStorePartRepository'];
+        $partsThatWereManufacturedProjector = new PartsThatWereManufacturedProjector($esPartRepository);
+        $this->app['Broadway\EventHandling\EventBusInterface']->subscribe($partsThatWereManufacturedProjector);
     }
 }
