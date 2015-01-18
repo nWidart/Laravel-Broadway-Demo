@@ -30,11 +30,11 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
      */
     private function bindEventClasses()
     {
-        $this->app->bind('Broadway\EventDispatcher\EventDispatcherInterface', function () {
+        $this->app->singleton('Broadway\EventDispatcher\EventDispatcherInterface', function () {
             return new EventDispatcher();
         });
 
-        $this->app->bind('Broadway\EventHandling\EventBusInterface', function () {
+        $this->app->singleton('Broadway\EventHandling\EventBusInterface', function () {
             return new SimpleEventBus();
         });
 
@@ -50,7 +50,7 @@ class LaravelBroadwayServiceProvider extends ServiceProvider
      */
     private function bindCommandClasses()
     {
-        $this->app->bind('Broadway\CommandHandling\CommandBusInterface', function () {
+        $this->app->singleton('Broadway\CommandHandling\CommandBusInterface', function () {
             return new SimpleCommandBus();
         });
     }
