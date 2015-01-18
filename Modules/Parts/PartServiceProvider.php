@@ -52,8 +52,6 @@ class PartServiceProvider extends ServiceProvider
 
     /**
      * Register the command handlers on the command bus
-     * This doesn't work for some reason. At the
-     * moment has to be called in controller
      */
     private function registerCommandSubscribers()
     {
