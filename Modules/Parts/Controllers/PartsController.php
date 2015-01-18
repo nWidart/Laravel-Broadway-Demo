@@ -16,14 +16,14 @@ class PartsController extends \BaseController
     /**
      * @var EventStorePartRepository
      */
-    private $partRepository;
+    private $eventStorePartRepository;
 
     public function __construct(
         CommandBusInterface $commandBus,
-        EventStorePartRepository $partRepository
+        EventStorePartRepository $EventStorePartRepository
     ) {
         $this->commandBus = $commandBus;
-        $this->partRepository = $partRepository;
+        $this->eventStorePartRepository = $EventStorePartRepository;
     }
 
     public function manufacture()
@@ -33,7 +33,7 @@ class PartsController extends \BaseController
 
         $command = new ManufacturePartCommand($partId, $manufacturerId, 'BMW');
 
-        $handler = new PartCommandHandler($this->partRepository);
+        $handler = new PartCommandHandler($this->eventStorePartRepository);
         $this->commandBus->subscribe($handler);
         $this->commandBus->dispatch($command);
 
