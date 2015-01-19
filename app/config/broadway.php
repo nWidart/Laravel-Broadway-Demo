@@ -6,8 +6,7 @@ return [
         'elastic-search' => [
             'config' => [
                 'hosts' => ['localhost:9200']
-            ],
-            'index' => 'read-model'
+            ]
         ],
     ],
 ];
