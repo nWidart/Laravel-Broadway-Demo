@@ -4,7 +4,7 @@ This is an example application using the [Broadway](https://github.com/qandidate
 
 It's basically the `examples/` directory in a Laravel application. When I'm feeling more comfortable, there will be more examples.
 
-This is becoming a demo application to demonstrate the usage of the Broadway package. Parts will soon be extracted out as a Laravel package to use in any Laravel project.
+This demo project uses the [Laravel-Broadway](https://github.com/nWidart/Laravel-broadway) package.
 
 ## Requirements
 
