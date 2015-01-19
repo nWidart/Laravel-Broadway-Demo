@@ -122,7 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider',
-        'Modules\Core\LaravelBroadwayServiceProvider',
+        'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider',
         'Modules\Parts\PartServiceProvider',
 	),
 

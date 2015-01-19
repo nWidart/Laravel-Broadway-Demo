@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "21e73cff06d191806b88751af6693ac4",
+    "hash": "853174eb28d92e23d044459fb5b5944a",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1644,6 +1644,57 @@
                 "php"
             ],
             "time": "2014-07-23 18:24:17"
+        },
+        {
+            "name": "nwidart/laravel-broadway",
+            "version": "0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nWidart/Laravel-broadway.git",
+                "reference": "a359ab371028071d84612f3dea70d4a5df34549d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nWidart/Laravel-broadway/zipball/a359ab371028071d84612f3dea70d4a5df34549d",
+                "reference": "a359ab371028071d84612f3dea70d4a5df34549d",
+                "shasum": ""
+            },
+            "require": {
+                "broadway/broadway": "~0.4",
+                "elasticsearch/elasticsearch": "~1.0",
+                "mitchellvanw/laravel-doctrine": "~0.5",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nwidart\\LaravelBroadway\\": "src/Nwidart/LaravelBroadway"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Widart",
+                    "email": "n.widart@gmail.com"
+                }
+            ],
+            "description": "A Laravel adapter for the Broadway ES/CQRS package.",
+            "keywords": [
+                "Domain Driven Design",
+                "broadway",
+                "cqrs",
+                "ddd",
+                "es",
+                "event sourcing",
+                "laravel"
+            ],
+            "time": "2015-01-19 20:08:43"
         },
         {
             "name": "patchwork/utf8",
