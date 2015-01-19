@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "853174eb28d92e23d044459fb5b5944a",
+    "hash": "e7635c4b7ccd3d158982649827e02e01",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -539,12 +539,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "f6ca269380341faa5d96f77d1df444d621a81809"
+                "reference": "cf3afaedf94542e54cb19cff3e50b64465862467"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/f6ca269380341faa5d96f77d1df444d621a81809",
-                "reference": "f6ca269380341faa5d96f77d1df444d621a81809",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/cf3afaedf94542e54cb19cff3e50b64465862467",
+                "reference": "cf3afaedf94542e54cb19cff3e50b64465862467",
                 "shasum": ""
             },
             "require": {
@@ -602,7 +602,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2015-01-12 15:58:01"
+            "time": "2015-01-18 17:41:24"
         },
         {
             "name": "doctrine/inflector",
@@ -785,12 +785,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/migrations.git",
-                "reference": "96f838b4fa93693d19196c8e24ed5f1c3972ba87"
+                "reference": "1ac14fac3ced533047d8feae8edc7c283d5b8a67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/migrations/zipball/96f838b4fa93693d19196c8e24ed5f1c3972ba87",
-                "reference": "96f838b4fa93693d19196c8e24ed5f1c3972ba87",
+                "url": "https://api.github.com/repos/doctrine/migrations/zipball/1ac14fac3ced533047d8feae8edc7c283d5b8a67",
+                "reference": "1ac14fac3ced533047d8feae8edc7c283d5b8a67",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "LGPL"
+                "LGPL-2.1"
             ],
             "authors": [
                 {
@@ -835,7 +835,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2014-12-19 17:14:47"
+            "time": "2015-01-19 02:26:02"
         },
         {
             "name": "doctrine/orm",
@@ -843,12 +843,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "61e07e590792dcff6db3f47edb76d97777ae7d50"
+                "reference": "2418f8f5e661c653e4b13cd433d569ece7318f62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/61e07e590792dcff6db3f47edb76d97777ae7d50",
-                "reference": "61e07e590792dcff6db3f47edb76d97777ae7d50",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/2418f8f5e661c653e4b13cd433d569ece7318f62",
+                "reference": "2418f8f5e661c653e4b13cd433d569ece7318f62",
                 "shasum": ""
             },
             "require": {
@@ -912,7 +912,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2015-01-18 01:54:18"
+            "time": "2015-01-19 03:21:18"
         },
         {
             "name": "elasticsearch/elasticsearch",
@@ -1323,12 +1323,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "691053ddfa1e3100acde3595cd3789085c1d3801"
+                "reference": "c17ed8875f37995491955c58bd0a019f12472599"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/691053ddfa1e3100acde3595cd3789085c1d3801",
-                "reference": "691053ddfa1e3100acde3595cd3789085c1d3801",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c17ed8875f37995491955c58bd0a019f12472599",
+                "reference": "c17ed8875f37995491955c58bd0a019f12472599",
                 "shasum": ""
             },
             "require": {
@@ -1430,7 +1430,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-01-12 20:31:03"
+            "time": "2015-01-19 01:27:09"
         },
         {
             "name": "mitchellvanw/laravel-doctrine",
@@ -2105,12 +2105,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "e29c7b692bae6610b137670d6749151fd6e41608"
+                "reference": "db95cfa68a8bc91d1c54f75c416f481c9a8bd100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/e29c7b692bae6610b137670d6749151fd6e41608",
-                "reference": "e29c7b692bae6610b137670d6749151fd6e41608",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/db95cfa68a8bc91d1c54f75c416f481c9a8bd100",
+                "reference": "db95cfa68a8bc91d1c54f75c416f481c9a8bd100",
                 "shasum": ""
             },
             "require": {
@@ -2149,7 +2149,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2014-12-05 14:17:46"
+            "time": "2015-01-18 13:49:36"
         },
         {
             "name": "symfony/browser-kit",
@@ -2945,12 +2945,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "ac36ccc812454e057aec564e0725509e74ce6b35"
+                "reference": "80401e8a3b6364287b80922fa303fc86d75714db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/ac36ccc812454e057aec564e0725509e74ce6b35",
-                "reference": "ac36ccc812454e057aec564e0725509e74ce6b35",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/80401e8a3b6364287b80922fa303fc86d75714db",
+                "reference": "80401e8a3b6364287b80922fa303fc86d75714db",
                 "shasum": ""
             },
             "require": {
@@ -2958,7 +2958,7 @@
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "doctrine/orm": "~2.2"
+                "doctrine/orm": "~2.4"
             },
             "suggest": {
                 "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
@@ -2991,7 +2991,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2014-08-18 12:52:16"
+            "time": "2015-01-19 01:52:30"
         },
         {
             "name": "mockery/mockery",
@@ -2999,12 +2999,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "22cf2a451e15c8c736aabc83d29478383e2b616e"
+                "reference": "cce38ee95d444190e8aac2d46c6d5e7b94ea44ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/22cf2a451e15c8c736aabc83d29478383e2b616e",
-                "reference": "22cf2a451e15c8c736aabc83d29478383e2b616e",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/cce38ee95d444190e8aac2d46c6d5e7b94ea44ef",
+                "reference": "cce38ee95d444190e8aac2d46c6d5e7b94ea44ef",
                 "shasum": ""
             },
             "require": {
@@ -3043,7 +3043,7 @@
                     "homepage": "http://davedevelopment.co.uk"
                 }
             ],
-            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succint API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
+            "description": "Mockery is a simple yet flexible PHP mock object framework for use in unit testing with PHPUnit, PHPSpec or any other testing framework. Its core goal is to offer a test double framework with a succinct API capable of clearly defining all possible object operations and interactions using a human readable Domain Specific Language (DSL). Designed as a drop in alternative to PHPUnit's phpunit-mock-objects library, Mockery is easy to integrate with PHPUnit and can operate alongside phpunit-mock-objects without the World ending.",
             "homepage": "http://github.com/padraic/mockery",
             "keywords": [
                 "BDD",
@@ -3057,7 +3057,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2015-01-16 19:11:16"
+            "time": "2015-01-18 20:11:41"
         },
         {
             "name": "phpunit/php-code-coverage",
