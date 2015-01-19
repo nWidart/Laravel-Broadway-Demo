@@ -39,14 +39,9 @@ class PartServiceProvider extends ServiceProvider
      */
     private function bindReadModelRepositories()
     {
-        $driver = $this->app['config']->get('broadway.read-model');
-        $config = $this->app['config']->get("broadway.read-model-connections.{$driver}.config");
-
-        $client = new Client($config);
-
-        $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) use ($client, $config) {
+        $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
             $serializer = $app['Broadway\Serializer\SerializerInterface'];
-            return new ElasticSearchReadModelPartRepository($client, $serializer);
+            return new ElasticSearchReadModelPartRepository($app['elastic-search'], $serializer);
         });
     }
 
