@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e7635c4b7ccd3d158982649827e02e01",
+    "hash": "fd096670ab2f8fb92a2b172478adda9d",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1647,16 +1647,16 @@
         },
         {
             "name": "nwidart/laravel-broadway",
-            "version": "0.1",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/Laravel-broadway.git",
-                "reference": "a359ab371028071d84612f3dea70d4a5df34549d"
+                "reference": "0e0a1c4e4c54506c94a3a70d780293e4111e63f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/Laravel-broadway/zipball/a359ab371028071d84612f3dea70d4a5df34549d",
-                "reference": "a359ab371028071d84612f3dea70d4a5df34549d",
+                "url": "https://api.github.com/repos/nWidart/Laravel-broadway/zipball/0e0a1c4e4c54506c94a3a70d780293e4111e63f8",
+                "reference": "0e0a1c4e4c54506c94a3a70d780293e4111e63f8",
                 "shasum": ""
             },
             "require": {
@@ -1694,7 +1694,7 @@
                 "event sourcing",
                 "laravel"
             ],
-            "time": "2015-01-19 20:08:43"
+            "time": "2015-01-20 20:11:39"
         },
         {
             "name": "patchwork/utf8",
