@@ -41,7 +41,7 @@ class PartServiceProvider extends ServiceProvider
     {
         $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
             $serializer = $app['Broadway\Serializer\SerializerInterface'];
-            return new ElasticSearchReadModelPartRepository($app['elastic-search'], $serializer);
+            return new ElasticSearchReadModelPartRepository($app['Elasticsearch'], $serializer);
         });
     }
 
