@@ -9,6 +9,7 @@
   "type": "project",
   "require": {
     "laravel/framework": "4.2.*",
+    "elasticsearch/elasticsearch": "~1.0",
     "nWidart/Laravel-broadway": "~0.2"
   },
   "require-dev": {
