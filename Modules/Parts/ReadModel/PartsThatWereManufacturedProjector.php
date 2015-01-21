@@ -18,18 +18,18 @@ class PartsThatWereManufacturedProjector extends Projector
 
     public function applyPartWasManufacturedEvent(PartWasManufacturedEvent $event)
     {
-        $readModel = $this->getReadModel($event->partId);
+        $readModel = $this->getReadModel($event->partId, $event->manufacturerName);
 
         $this->repository->save($readModel);
     }
 
-    private function getReadModel($partId)
+    private function getReadModel($partId, $manufacturerName)
     {
         $partId = (string)$partId;
         $readModel = $this->repository->find($partId);
 
         if (null === $readModel) {
-            $readModel = new PartsThatWereManufactured($partId);
+            $readModel = new PartsThatWereManufactured($partId, $manufacturerName);
         }
 
         return $readModel;

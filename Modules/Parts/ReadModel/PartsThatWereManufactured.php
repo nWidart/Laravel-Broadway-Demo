@@ -5,11 +5,19 @@ use Broadway\Serializer\SerializableInterface;
 
 class PartsThatWereManufactured implements ReadModelInterface, SerializableInterface
 {
+    /**
+     * @var int
+     */
     private $manufacturedPartId;
+    /**
+     * @var string
+     */
+    private $manufacturerName;
 
-    public function __construct($manufacturedPartId)
+    public function __construct($manufacturedPartId, $manufacturerName)
     {
         $this->manufacturedPartId = $manufacturedPartId;
+        $this->manufacturerName = $manufacturerName;
     }
 
     /**
@@ -26,7 +34,7 @@ class PartsThatWereManufactured implements ReadModelInterface, SerializableInter
      */
     public static function deserialize(array $data)
     {
-        return new self($data['manufacturedPartId']);
+        return new self($data['manufacturedPartId'], $data['manufacturerName']);
     }
 
     /**
@@ -34,6 +42,9 @@ class PartsThatWereManufactured implements ReadModelInterface, SerializableInter
      */
     public function serialize()
     {
-        return ['manufacturedPartId' => $this->manufacturedPartId];
+        return [
+            'manufacturedPartId' => $this->manufacturedPartId,
+            'manufacturerName' => $this->manufacturerName
+        ];
     }
 }
