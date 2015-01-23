@@ -56,7 +56,7 @@ php artisan serve
 
 * Route: 
     * Write: `/parts/manufacture`
-    * Read: `/parts/manufactured-parts/{$uuid}`, where `$uuid` is an uuid of a part in the database (check the `event_store` table)
+    * Read: `/parts/manufactured-parts/`
 * Code: `Modules/Parts` 
 * Tests: `Tests/Parts/`
 

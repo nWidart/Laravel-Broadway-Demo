@@ -36,10 +36,10 @@ class PartsController extends \BaseController
         dd('Part was stored in event store');
     }
 
-    public function manufacturedParts($partId)
+    public function manufacturedParts()
     {
-        $part = $this->readModelPartRepository->find($partId);
+        $parts = $this->readModelPartRepository->findAll();
 
-        dd('read model', $part);
+        dd('read model', $parts);
     }
 }
