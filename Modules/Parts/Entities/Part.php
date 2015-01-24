@@ -72,5 +72,4 @@ class Part extends EventSourcedAggregateRoot
         // the event stream.
         return [$this->manufacturer];
     }
-
 }

@@ -1,6 +1,5 @@
 <?php namespace Modules\Parts;
 
-use Elasticsearch\Client;
 use Illuminate\Support\ServiceProvider;
 use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\ReadModel\PartsThatWereManufacturedProjector;
@@ -30,6 +29,7 @@ class PartServiceProvider extends ServiceProvider
         $this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
             $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
             $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+
             return new MysqlEventStorePartRepository($eventStore, $eventBus);
         });
     }
@@ -41,6 +41,7 @@ class PartServiceProvider extends ServiceProvider
     {
         $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
             $serializer = $app['Broadway\Serializer\SerializerInterface'];
+
             return new ElasticSearchReadModelPartRepository($app['Elasticsearch'], $serializer);
         });
     }
@@ -50,7 +51,7 @@ class PartServiceProvider extends ServiceProvider
      */
     private function registerCommandSubscribers()
     {
-        $this->app->singleton('broadway.command-subscribers', function() {
+        $this->app->singleton('broadway.command-subscribers', function () {
             return [
                 PartCommandHandler::class => 'Modules\Parts\Repositories\EventStorePartRepository'
             ];
@@ -62,7 +63,7 @@ class PartServiceProvider extends ServiceProvider
      */
     private function registerEventSubscribers()
     {
-        $this->app->singleton('broadway.event-subscribers', function() {
+        $this->app->singleton('broadway.event-subscribers', function () {
             return [
                 PartsThatWereManufacturedProjector::class => 'Modules\Parts\Repositories\ReadModelPartRepository'
             ];

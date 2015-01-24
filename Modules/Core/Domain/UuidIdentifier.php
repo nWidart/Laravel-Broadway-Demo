@@ -28,7 +28,7 @@ class UuidIdentifier implements Identifier
     /**
      * Determine equality with another Value Object
      *
-     * @param Identifier $other
+     * @param  Identifier $other
      * @return bool
      */
     public function equals(Identifier $other)

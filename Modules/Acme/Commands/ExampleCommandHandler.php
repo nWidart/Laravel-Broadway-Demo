@@ -13,6 +13,6 @@ class ExampleCommandHandler extends CommandHandler
      */
     public function handleExampleCommand(ExampleCommand $command)
     {
-        echo $command->getMessage() . "\n";
+        echo $command->getMessage()."\n";
     }
 }
