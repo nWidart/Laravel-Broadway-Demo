@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'default' => 'mysql',
+    'default' => 'pgsql',
     'connections' => [
         'mysql' => [
             'driver' => 'mysql',
@@ -16,9 +16,9 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => 'localhost',
-            'database' => 'homestead',
-            'username' => 'homestead',
-            'password' => 'secret',
+            'database' => 'broadway-laravel',
+            'username' => 'nicolaswidart',
+            'password' => '',
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
