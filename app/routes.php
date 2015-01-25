@@ -13,3 +13,5 @@ Route::get('/event-handling', 'Modules\Acme\Controllers\HomeController@eventHand
 */
 Route::get('/parts/manufacture', 'Modules\Parts\Controllers\PartsController@manufacture');
 Route::get('/parts/manufactured-parts/{partId}', 'Modules\Parts\Controllers\PartsController@manufacturedParts');
+
+Route::get('/parts/rename', 'Modules\Parts\Controllers\PartsController@renameManufacturer');

@@ -2,6 +2,7 @@
 
 use Broadway\CommandHandling\CommandBusInterface;
 use Modules\Parts\Commands\ManufacturePartCommand;
+use Modules\Parts\Commands\RenameManufacturerForPartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
 use Modules\Parts\Repositories\ReadModelPartRepository;
@@ -41,5 +42,14 @@ class PartsController extends \BaseController
         $parts = $this->readModelPartRepository->findAll();
 
         dd('read model', $parts);
+    }
+
+    public function renameManufacturer()
+    {
+        $partId = PartId::fromString('56932f37-d338-484c-a376-a32cfdf4cae1');
+        $command = new RenameManufacturerForPartCommand($partId, 'Audi');
+        $this->commandBus->dispatch($command);
+
+        dd('Part was renamed');
     }
 }
