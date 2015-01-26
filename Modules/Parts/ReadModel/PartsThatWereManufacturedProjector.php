@@ -1,6 +1,7 @@
 <?php namespace Modules\Parts\ReadModel;
 
 use Broadway\ReadModel\Projector;
+use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 use Modules\Parts\Events\PartWasManufacturedEvent;
 use Modules\Parts\Repositories\ReadModelPartRepository;
 
@@ -17,6 +18,13 @@ class PartsThatWereManufacturedProjector extends Projector
     }
 
     public function applyPartWasManufacturedEvent(PartWasManufacturedEvent $event)
+    {
+        $readModel = $this->getReadModel($event->partId, $event->manufacturerName);
+
+        $this->repository->save($readModel);
+    }
+
+    public function applyPartManufacturerWasRenamedEvent(PartManufacturerWasRenamedEvent $event)
     {
         $readModel = $this->getReadModel($event->partId, $event->manufacturerName);
 
