@@ -46,7 +46,7 @@ class PartsController extends \BaseController
 
     public function renameManufacturer()
     {
-        $partId = PartId::fromString('56932f37-d338-484c-a376-a32cfdf4cae1');
+        $partId = PartId::fromString('2f63d961-8bf5-4f94-99af-618fb4130007');
         $command = new RenameManufacturerForPartCommand($partId, 'Audi');
         $this->commandBus->dispatch($command);
 
