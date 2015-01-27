@@ -22,7 +22,8 @@ class PartWasManufacturedEvent implements SerializableInterface
      */
     public static function deserialize(array $data)
     {
-        return new self($data['partId'], $data['manufacturerId'], $data['manufacturerName']);
+        $partId = PartId::fromString($data['partId']);
+        return new self($partId, $data['manufacturerId'], $data['manufacturerName']);
     }
 
     /**
@@ -31,8 +32,8 @@ class PartWasManufacturedEvent implements SerializableInterface
     public function serialize()
     {
         return [
-            'partId' => $this->partId,
-            'manufacturerId' => $this->manufacturerId,
+            'partId' => $this->partId->toString(),
+            'manufacturerId' => $this->manufacturerId->toString(),
             'manufacturerName' => $this->manufacturerName,
         ];
     }
