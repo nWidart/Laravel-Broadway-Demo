@@ -1,16 +1,19 @@
 <?php namespace Modules\Parts\Commands\Handlers;
 
 use Broadway\CommandHandling\CommandHandler;
-use Broadway\EventSourcing\EventSourcingRepository;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Commands\RenameManufacturerForPartCommand;
 use Modules\Parts\Entities\Part;
+use Modules\Parts\Repositories\MysqlEventStorePartRepository;
 
 class PartCommandHandler extends CommandHandler
 {
+    /**
+     * @var MysqlEventStorePartRepository
+     */
     private $repository;
 
-    public function __construct(EventSourcingRepository $repository)
+    public function __construct(MysqlEventStorePartRepository $repository)
     {
         $this->repository = $repository;
     }
