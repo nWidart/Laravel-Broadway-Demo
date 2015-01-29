@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'default' => 'pgsql',
+    'default' => 'mysql',
     'connections' => [
         'mysql' => [
             'driver' => 'mysql',

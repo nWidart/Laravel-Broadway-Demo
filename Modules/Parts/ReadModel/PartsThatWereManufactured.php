@@ -28,6 +28,11 @@ class PartsThatWereManufactured implements ReadModelInterface, SerializableInter
         return $this->manufacturedPartId;
     }
 
+    public function renameManufacturer($manufacturerName)
+    {
+        $this->manufacturerName = $manufacturerName;
+    }
+
     /**
      * @param  array $data
      * @return mixed The object instance

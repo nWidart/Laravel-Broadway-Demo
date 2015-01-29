@@ -8,9 +8,9 @@ class PartManufacturerWasRenamedEvent implements SerializableInterface
     public $partId;
     public $manufacturerName;
 
-    public function __construct(PartId $partId, $manufacturerName)
+    public function __construct($partId, $manufacturerName)
     {
-        $this->partId = $partId->toString();
+        $this->partId = $partId;
         $this->manufacturerName = $manufacturerName;
     }
 
