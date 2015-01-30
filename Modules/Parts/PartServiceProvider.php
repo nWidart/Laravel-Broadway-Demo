@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Parts\Commands\Handlers\PartCommandHandler;
+use Modules\Parts\Console\ReplayPartsCommand;
 use Modules\Parts\ReadModel\PartsThatWereManufacturedProjector;
 use Modules\Parts\Repositories\ElasticSearchReadModelPartRepository;
 use Modules\Parts\Repositories\MysqlEventStorePartRepository;
@@ -19,6 +20,8 @@ class PartServiceProvider extends ServiceProvider
 
         $this->registerCommandSubscribers();
         $this->registerEventSubscribers();
+
+        $this->registerConsoleCommands();
 
         include_once __DIR__.'/Http/routes.php';
     }
@@ -70,5 +73,15 @@ class PartServiceProvider extends ServiceProvider
                 PartsThatWereManufacturedProjector::class => 'Modules\Parts\Repositories\ReadModelPartRepository'
             ];
         });
+    }
+
+    private function registerConsoleCommands()
+    {
+        $this->app->bindShared('command.asgard.replay.parts', function () {
+            return new ReplayPartsCommand();
+        });
+        $this->commands([
+            'command.asgard.replay.parts',
+        ]);
     }
 }
