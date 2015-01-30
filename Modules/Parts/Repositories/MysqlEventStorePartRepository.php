@@ -47,12 +47,4 @@ class MysqlEventStorePartRepository extends EventSourcingRepository implements E
             $statement->fetchAll()
         );
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function load($id)
-    {
-        return $this->eventStore->load($id);
-    }
 }
