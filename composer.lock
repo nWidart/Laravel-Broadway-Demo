@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "87ebd881d85c0b49c33d8f4923b4d1c8",
+    "hash": "bb2d3b0ab217b9f771495ffb5aaa2fe0",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1662,12 +1662,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/Laravel-broadway.git",
-                "reference": "faacf89bc73fe0fad625d9733a27ffc9e330a888"
+                "reference": "8409f3475975b544c0d3a4970dea131ba5284449"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/Laravel-broadway/zipball/faacf89bc73fe0fad625d9733a27ffc9e330a888",
-                "reference": "faacf89bc73fe0fad625d9733a27ffc9e330a888",
+                "url": "https://api.github.com/repos/nWidart/Laravel-broadway/zipball/8409f3475975b544c0d3a4970dea131ba5284449",
+                "reference": "8409f3475975b544c0d3a4970dea131ba5284449",
                 "shasum": ""
             },
             "require": {
@@ -1707,7 +1707,7 @@
                 "event sourcing",
                 "laravel"
             ],
-            "time": "2015-01-30 13:10:29"
+            "time": "2015-01-30 13:31:44"
         },
         {
             "name": "pimple/pimple",
