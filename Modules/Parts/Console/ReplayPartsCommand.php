@@ -61,7 +61,8 @@ class ReplayPartsCommand extends Command
 
     private function rebuildStream($id)
     {
-        $stream = $this->eventStore->load($id);
+        $eventStore = app('Broadway\EventStore\EventStoreInterface');
+        $stream = $eventStore->load($id);
 
         foreach ($stream->getIterator() as $event) {
             $this->addEventToBuffer($event);
