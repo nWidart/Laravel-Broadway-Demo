@@ -1,4 +1,4 @@
-<?php namespace Modules\Acme\Controllers;
+<?php namespace Modules\Acme\Http\Controllers;
 
 use Broadway\CommandHandling\SimpleCommandBus;
 use Broadway\Domain\DomainEventStream;

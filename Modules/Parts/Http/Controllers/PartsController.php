@@ -1,4 +1,4 @@
-<?php namespace Modules\Parts\Controllers;
+<?php namespace Modules\Parts\Http\Controllers;
 
 use Broadway\CommandHandling\CommandBusInterface;
 use Illuminate\Routing\Controller;
