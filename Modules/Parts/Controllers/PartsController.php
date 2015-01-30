@@ -1,13 +1,14 @@
 <?php namespace Modules\Parts\Controllers;
 
 use Broadway\CommandHandling\CommandBusInterface;
+use Illuminate\Routing\Controller;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Commands\RenameManufacturerForPartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
 use Modules\Parts\Repositories\ReadModelPartRepository;
 
-class PartsController extends \BaseController
+class PartsController extends Controller
 {
     /**
      * @var CommandBusInterface

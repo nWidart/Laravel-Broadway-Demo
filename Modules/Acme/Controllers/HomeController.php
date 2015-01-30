@@ -6,12 +6,13 @@ use Broadway\Domain\DomainMessage;
 use Broadway\Domain\Metadata;
 use Broadway\EventDispatcher\EventDispatcher;
 use Broadway\EventHandling\SimpleEventBus;
+use Illuminate\Routing\Controller;
 use Modules\Acme\Commands\ExampleCommand;
 use Modules\Acme\Commands\ExampleCommandHandler;
 use Modules\Acme\Listeners\MyEventListener;
 use stdClass;
 
-class HomeController extends \BaseController
+class HomeController extends Controller
 {
     public function __construct()
     {
