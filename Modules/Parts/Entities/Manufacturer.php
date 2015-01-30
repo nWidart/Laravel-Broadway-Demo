@@ -40,7 +40,7 @@ class Manufacturer extends EventSourcedEntity
             return;
         }
         // This event may also be handled by the aggregate root.
-        $this->apply(new PartManufacturerWasRenamedEvent($this->partId->toString(), $manufacturerName));
+        $this->apply(new PartManufacturerWasRenamedEvent($this->partId, $manufacturerName));
     }
 
     protected function applyPartManufacturerWasRenamedEvent(PartManufacturerWasRenamedEvent $event)
