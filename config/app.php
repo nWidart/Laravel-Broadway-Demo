@@ -146,6 +146,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 
         'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider',
+        'Modules\Parts\PartServiceProvider',
 	],
 
 	/*
