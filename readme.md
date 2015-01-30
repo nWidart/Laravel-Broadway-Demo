@@ -9,8 +9,8 @@ This demo project uses the [Laravel-Broadway](https://github.com/nWidart/Laravel
 ## Requirements
 
 - PHP >=5.5
-- Elastic search
-- PostgreSQL
+- Elasticsearch
+- MySQL
 
 ## Installation
 
