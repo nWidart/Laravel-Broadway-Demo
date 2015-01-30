@@ -58,6 +58,7 @@ php artisan serve
 * Route: 
     * Write: `/parts/manufacture`
     * Read: `/parts/manufactured-parts/`
+    * Rename: `/parts/rename/uuid/newName`
 * Code: `Modules/Parts` 
 * Tests: `Tests/Parts/`
 
