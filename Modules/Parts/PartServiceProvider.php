@@ -19,6 +19,8 @@ class PartServiceProvider extends ServiceProvider
 
         $this->registerCommandSubscribers();
         $this->registerEventSubscribers();
+
+        include_once __DIR__.'/Http/routes.php';
     }
 
     /**
