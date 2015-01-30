@@ -45,10 +45,11 @@ class PartsController extends Controller
         dd('read model', $parts);
     }
 
-    public function renameManufacturer()
+    public function renameManufacturer($partId, $name)
     {
-        $partId = PartId::fromString('24c49ec0-0441-482a-abc4-93d04c4ad5fb');
-        $command = new RenameManufacturerForPartCommand($partId, 'Audi');
+        $partId = PartId::fromString($partId);
+
+        $command = new RenameManufacturerForPartCommand($partId, $name);
         $this->commandBus->dispatch($command);
 
         dd('Part was renamed');
