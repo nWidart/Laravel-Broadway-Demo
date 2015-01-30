@@ -147,6 +147,7 @@ return [
 
         'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider',
         'Modules\Parts\PartServiceProvider',
+        'Modules\Acme\AcmeServiceProvider',
 	],
 
 	/*
