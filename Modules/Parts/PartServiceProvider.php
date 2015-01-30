@@ -35,7 +35,7 @@ class PartServiceProvider extends ServiceProvider
             $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
             $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
 
-            return new MysqlEventStorePartRepository($eventStore, $eventBus);
+            return new MysqlEventStorePartRepository($eventStore, $eventBus, $app['Doctrine\DBAL\Connection']);
         });
     }
 
@@ -77,8 +77,10 @@ class PartServiceProvider extends ServiceProvider
 
     private function registerConsoleCommands()
     {
-        $this->app->bindShared('command.asgard.replay.parts', function () {
-            return new ReplayPartsCommand();
+        $this->app->bindShared('command.asgard.replay.parts', function ($app) {
+            $eventStorePartRepository = $app['Modules\Parts\Repositories\EventStorePartRepository'];
+            $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+            return new ReplayPartsCommand($eventStorePartRepository, $eventBus);
         });
         $this->commands([
             'command.asgard.replay.parts',
