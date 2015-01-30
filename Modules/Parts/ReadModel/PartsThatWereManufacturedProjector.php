@@ -21,7 +21,7 @@ class PartsThatWereManufacturedProjector extends Projector
     public function applyPartWasManufacturedEvent(PartWasManufacturedEvent $event)
     {
         try {
-            $readModel = $this->getReadModel($event->partId, $event->manufacturerName);
+            $readModel = $this->getReadModel($event->partId);
         } catch (\Exception $e) {
             $readModel = new PartsThatWereManufactured($event->partId->toString(), $event->manufacturerName);
         }
