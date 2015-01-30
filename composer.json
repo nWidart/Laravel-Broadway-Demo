@@ -23,13 +23,18 @@
       "database"
     ],
     "psr-4": {
-      "App\\": "app/"
+      "App\\": "app/",
+      "Modules\\": "Modules/"
     }
   },
   "autoload-dev": {
     "classmap": [
       "tests/TestCase.php"
-    ]
+    ],
+    "psr-4": {
+      "Asgard\\Tests\\": "Tests/",
+      "Asgard\\Stubs\\": "Stubs/"
+    }
   },
   "scripts": {
     "post-install-cmd": [
