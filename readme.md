@@ -1,23 +1,73 @@
-## Laravel PHP Framework
+# Laravel Broadway example app
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This is an example application using the [Broadway](https://github.com/qandidate-labs/broadway/) package.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+It's basically the `examples/` directory in a Laravel application. When I'm feeling more comfortable, there will be more examples.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+This demo project uses the [Laravel-Broadway](https://github.com/nWidart/Laravel-broadway) package.
 
-## Official Documentation
+## Requirements
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+- PHP >=5.5
+- Elastic search
+- PostgreSQL
 
-## Contributing
+## Installation
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### Clone this repository
 
-### License
+```
+git clone https://github.com/nWidart/Laravel-Broadway-Demo.git
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+### Configure the database connection information
+
+Edit the `app/config/local/database.php` file to suit your needs.
+
+### Run the migrations
+
+```
+php artisan migrate
+```
+
+### Run the server
+
+```
+php artisan serve
+```
+
+## Examples
+
+### [Command Handling](https://github.com/qandidate-labs/broadway/tree/master/examples/command-handling)
+
+* Route: `/command-handling`
+* Code: `Modules/Controllers/HomeController@index`
+
+### [Event Dispatcher](https://github.com/qandidate-labs/broadway/tree/master/examples/event-dispatcher)
+
+* Route: `/event-dispatcher`
+* Code: `Modules/Controllers/HomeController@eventDispatcher`
+
+### [Event Handling](https://github.com/qandidate-labs/broadway/tree/master/examples/event-handling)
+
+* Route: `/event-handling`
+* Code: `Modules/Controllers/HomeController@eventHandling`
+
+### [Event sourced child entity](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-child-entity)
+
+* Route: 
+    * Write: `/parts/manufacture`
+    * Read: `/parts/manufactured-parts/`
+* Code: `Modules/Parts` 
+* Tests: `Tests/Parts/`
+
+### [Event sourced domain](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-domain-with-tests)
+
+* Route: `n/a`
+* Code: *coming soon*
+* Tests: *coming soon*
+
+### [Serializer](https://github.com/qandidate-labs/broadway/blob/master/examples/serializer/serializer.php)
+
+* Route: *coming soon*
+* Code: *coming soon*
