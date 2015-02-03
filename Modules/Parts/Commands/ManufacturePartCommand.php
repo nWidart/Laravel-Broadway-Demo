@@ -1,7 +1,6 @@
 <?php namespace Modules\Parts\Commands;
 
 use Modules\Core\Domain\Identifier;
-use Modules\Parts\Entities\PartId;
 
 class ManufacturePartCommand
 {
