@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bb2d3b0ab217b9f771495ffb5aaa2fe0",
+    "hash": "d42dafc3ad3cd7e5a1d9f132504bd765",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1658,7 +1658,7 @@
         },
         {
             "name": "nwidart/laravel-broadway",
-            "version": "dev-develop",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/Laravel-broadway.git",
@@ -3913,8 +3913,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "laravel/framework": 20,
-        "nwidart/laravel-broadway": 20
+        "laravel/framework": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
