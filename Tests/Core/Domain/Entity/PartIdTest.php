@@ -6,7 +6,6 @@ use Rhumsaa\Uuid\Uuid;
 
 class PartIdTest extends PHPUnit_Framework_TestCase
 {
-    /** @test */
     public function should_require_instance_of_uuid()
     {
         $this->setExpectedException('Exception');
