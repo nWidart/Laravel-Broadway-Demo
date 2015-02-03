@@ -1,13 +1,13 @@
 <?php namespace Modules\Parts\Commands;
 
-use Modules\Parts\Entities\PartId;
+use Modules\Core\Domain\Identifier;
 
 class RenameManufacturerForPartCommand
 {
     public $partId;
     public $manufacturerName;
 
-    public function __construct(PartId $partId, $manufacturerName)
+    public function __construct(Identifier $partId, $manufacturerName)
     {
         $this->partId = $partId;
         $this->manufacturerName = $manufacturerName;
