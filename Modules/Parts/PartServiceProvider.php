@@ -58,7 +58,7 @@ class PartServiceProvider extends ServiceProvider
     {
         $partCommandHandler = new PartCommandHandler($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
 
-        $this->app['laravelbroadway.command.registry']->add([
+        $this->app['laravelbroadway.command.registry']->subscribe([
             $partCommandHandler
         ]);
     }
@@ -70,7 +70,7 @@ class PartServiceProvider extends ServiceProvider
     {
         $partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
 
-        $this->app['laravelbroadway.event.registry']->add([
+        $this->app['laravelbroadway.event.registry']->subscribe([
             $partsThatWereManfacturedProjector
         ]);
     }
