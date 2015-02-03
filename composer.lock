@@ -1662,12 +1662,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nWidart/Laravel-broadway.git",
-                "reference": "bf2ad5ccfd8c34805ec7866d4c2e50d0505c65ee"
+                "reference": "7f8a6d37b0ee0a349ff936f4dc299e0105e55779"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nWidart/Laravel-broadway/zipball/bf2ad5ccfd8c34805ec7866d4c2e50d0505c65ee",
-                "reference": "bf2ad5ccfd8c34805ec7866d4c2e50d0505c65ee",
+                "url": "https://api.github.com/repos/nWidart/Laravel-broadway/zipball/7f8a6d37b0ee0a349ff936f4dc299e0105e55779",
+                "reference": "7f8a6d37b0ee0a349ff936f4dc299e0105e55779",
                 "shasum": ""
             },
             "require": {
@@ -1707,7 +1707,7 @@
                 "event sourcing",
                 "laravel"
             ],
-            "time": "2015-02-02 19:40:04"
+            "time": "2015-02-03 12:46:16"
         },
         {
             "name": "pimple/pimple",
