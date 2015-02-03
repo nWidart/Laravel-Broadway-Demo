@@ -10,7 +10,7 @@
   "require": {
     "laravel/framework": "5.0.*@dev",
     "elasticsearch/elasticsearch": "~1.0",
-    "nWidart/Laravel-broadway": "dev-develop"
+    "nwidart/laravel-broadway": "dev-develop"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
