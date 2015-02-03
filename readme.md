@@ -22,7 +22,13 @@ git clone https://github.com/nWidart/Laravel-Broadway-Demo.git
 
 ### Configure the database connection information
 
-Edit the `app/config/local/database.php` file to suit your needs.
+Edit the `config/database.php` file to suit your needs.
+
+### Publish configuration and migraitons
+
+```
+php artisan vendor:publish
+```
 
 ### Run the migrations
 
