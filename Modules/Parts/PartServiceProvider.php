@@ -56,11 +56,11 @@ class PartServiceProvider extends ServiceProvider
      */
     private function registerCommandSubscribers()
     {
-        $this->app->singleton('broadway.command-subscribers', function () {
-            return [
-                PartCommandHandler::class => 'Modules\Parts\Repositories\EventStorePartRepository'
-            ];
-        });
+        $partCommandHandler = new PartCommandHandler($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
+
+        $this->app['laravelbroadway.command.registry']->add([
+            $partCommandHandler
+        ]);
     }
 
     /**
@@ -68,11 +68,11 @@ class PartServiceProvider extends ServiceProvider
      */
     private function registerEventSubscribers()
     {
-        $this->app->singleton('broadway.event-subscribers', function () {
-            return [
-                PartsThatWereManufacturedProjector::class => 'Modules\Parts\Repositories\ReadModelPartRepository'
-            ];
-        });
+        $partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
+
+        $this->app['laravelbroadway.event.registry']->add([
+            $partsThatWereManfacturedProjector
+        ]);
     }
 
     private function registerConsoleCommands()
