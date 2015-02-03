@@ -8,11 +8,11 @@ use Broadway\UuidGenerator\Rfc4122\Version4Generator;
 use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Commands\RenameManufacturerForPartCommand;
+use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
 use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 use Modules\Parts\Events\PartWasManufacturedEvent;
 use Modules\Parts\Repositories\MysqlEventStorePartRepository;
-use Rhumsaa\Uuid\Uuid;
 
 class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
 {
@@ -36,7 +36,8 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     protected function createCommandHandler(EventStoreInterface $eventStore, EventBusInterface $eventBus)
     {
-        $repository = new MysqlEventStorePartRepository($eventStore, $eventBus);
+        $app = $this->createApplication();
+        $repository = new MysqlEventStorePartRepository($eventStore, $eventBus, $app['Doctrine\DBAL\Connection']);
 
         return new PartCommandHandler($repository);
     }
@@ -46,12 +47,14 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     public function it_can_manufacture()
     {
-        $id = PartId::generate();
+        $partId = $this->makeNewPartId();
+        $manufacturerId = $this->makeManufacturerId();
+
         $this->scenario
-            ->withAggregateId($id)
+            ->withAggregateId($partId->toString())
             ->given([])
-            ->when(new ManufacturePartCommand($id, 'acme', 'Acme, Inc'))
-            ->then([new PartWasManufacturedEvent($id, 'acme', 'Acme, Inc')]);
+            ->when(new ManufacturePartCommand($partId, $manufacturerId, 'Acme, Inc'))
+            ->then([new PartWasManufacturedEvent($partId, $manufacturerId, 'Acme, Inc')]);
     }
 
     /**
@@ -81,5 +84,38 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
             ])
             ->when(new RenameManufacturerForPartCommand($id, 'Acme, Inc.'))
             ->then([]);
+    }
+
+    /**
+     * Creates the application.
+     * @return \Illuminate\Foundation\Application
+     */
+    private function createApplication()
+    {
+        $app = require __DIR__ . '/../../../bootstrap/app.php';
+
+        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+
+        return $app;
+    }
+
+    /**
+     * @return \Modules\Core\Domain\Identifier
+     */
+    private function makeNewPartId()
+    {
+        $id = PartId::generate();
+
+        return PartId::fromString($id);
+    }
+
+    /**
+     * @return \Modules\Core\Domain\Identifier
+     */
+    private function makeManufacturerId()
+    {
+        $id = ManufacturerId::generate();
+
+        return ManufacturerId::fromString($id);
     }
 }
