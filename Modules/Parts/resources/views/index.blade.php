@@ -23,7 +23,7 @@
                 <tr>
                     <td>{{ $part->manufacturedPartId  }}</td>
                     <td>
-                        <a href="#" id="manufacturer-name"
+                        <a href="#" class="manufacturer-name"
                            data-type="text"
                            data-pk="{{ $part->manufacturedPartId  }}"
                            data-url="{{ URL::route('parts.update') }}"
@@ -73,7 +73,7 @@
     <script>
         $(document).ready(function() {
             $.fn.editable.defaults.mode = 'inline';
-            $('#manufacturer-name').editable();
+            $('.manufacturer-name').editable();
         });
     </script>
 @stop
