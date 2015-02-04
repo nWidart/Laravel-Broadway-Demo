@@ -72,14 +72,4 @@ class PartsController extends Controller
 
         return ['updated' => true];
     }
-
-    public function renameManufacturer($partId, $name)
-    {
-        $partId = PartId::fromString($partId);
-
-        $command = new RenameManufacturerForPartCommand($partId, $name);
-        $this->commandBus->dispatch($command);
-
-        dd('Part was renamed');
-    }
 }
