@@ -1,7 +1,9 @@
 <?php namespace Modules\Parts\Http\Controllers;
 
 use Broadway\CommandHandling\CommandBusInterface;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Commands\RenameManufacturerForPartCommand;
 use Modules\Parts\Entities\ManufacturerId;
@@ -32,6 +34,17 @@ class PartsController extends Controller
         $parts = $this->readModelPartRepository->findAll();
 
         return view('parts::index', compact('parts'));
+    }
+
+    public function store(Request $request)
+    {
+        $partId = PartId::generate();
+        $manufacturerId = ManufacturerId::generate();
+
+        $command = new ManufacturePartCommand($partId, $manufacturerId, $request->get('name'));
+        $this->commandBus->dispatch($command);
+
+        return Redirect::route('parts.index')->with('success', 'Part successfully created.');
     }
 
     public function manufacture()
