@@ -145,6 +145,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+        'Illuminate\Html\HtmlServiceProvider',
         'Pingpong\Modules\ModulesServiceProvider',
         'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider',
         'Modules\Acme\AcmeServiceProvider',
@@ -195,7 +196,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-        'Module'    => 'Pingpong\Modules\Facades\Module'
+        'Module'    => 'Pingpong\Modules\Facades\Module',
+        'Form'    => 'Illuminate\Html\FormFacade',
 	],
 
 ];
