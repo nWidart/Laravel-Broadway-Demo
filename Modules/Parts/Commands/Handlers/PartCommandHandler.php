@@ -2,6 +2,7 @@
 
 use Broadway\CommandHandling\CommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
+use Modules\Parts\Commands\RemovePartCommand;
 use Modules\Parts\Commands\RenameManufacturerForPartCommand;
 use Modules\Parts\Entities\Part;
 use Modules\Parts\Repositories\MysqlEventStorePartRepository;
@@ -40,5 +41,12 @@ class PartCommandHandler extends CommandHandler
         $part = $this->repository->load($command->partId);
         $part->renameManufacturer($command->manufacturerName);
         $this->repository->add($part);
+    }
+
+    protected function handleRemovePartCommand(RemovePartCommand $command)
+    {
+        $part = $this->repository->load($command->partId);
+        $part->remove();
+        //$this->repository->add($part);
     }
 }

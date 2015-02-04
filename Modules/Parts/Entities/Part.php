@@ -50,6 +50,11 @@ class Part extends EventSourcedAggregateRoot
         $this->manufacturer->rename($manufacturerName);
     }
 
+    public function remove()
+    {
+        // $this->apply(new PartWasRemovedEvent($this->partId));
+    }
+
     public function applyPartWasManufacturedEvent(PartWasManufacturedEvent $event)
     {
         $this->partId = $event->partId;

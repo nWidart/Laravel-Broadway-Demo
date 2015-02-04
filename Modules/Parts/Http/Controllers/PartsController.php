@@ -6,6 +6,7 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Modules\Parts\Commands\ManufacturePartCommand;
+use Modules\Parts\Commands\RemovePartCommand;
 use Modules\Parts\Commands\RenameManufacturerForPartCommand;
 use Modules\Parts\Entities\ManufacturerId;
 use Modules\Parts\Entities\PartId;
@@ -83,8 +84,8 @@ class PartsController extends Controller
     {
         $partId = PartId::fromString($request->get('partId'));
 
-        // $command = new RemovePartCommand($partId);
-        // $this->commandBus->dispatch($command);
+        $command = new RemovePartCommand($partId);
+        $this->commandBus->dispatch($command);
 
         return Redirect::route('parts.index')->with('success', 'Part successfully deleted.');
     }
