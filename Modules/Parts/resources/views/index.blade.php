@@ -6,9 +6,11 @@
             <h1 class="page-header">Parts</h1>
         </div>
         <div class="col-md-4">
-            <a class="btn btn-primary pull-right" href="">Create part</a>
+            <a class="btn btn-primary pull-right" data-toggle="modal" data-target="#createPartModal">Create part</a>
         </div>
     </div>
+
+    @include('parts::partials.notifications')
 
     <table class="table table-hover">
         <thead>
@@ -24,4 +26,28 @@
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <div class="modal fade" id="createPartModal" tabindex="-1" role="dialog" aria-labelledby="Create a part" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Create a part</h4>
+                </div>
+                <div class="modal-body">
+                    {!! Form::open(['route' => 'parts.store', 'method' => 'post']) !!}
+                        <div>
+                            {!! Form::label('name', 'Name:') !!}
+                            {!! Form::text('name', Input::old('name'), ['class' => 'form-control', 'placeholder' => 'Name']) !!}
+                            {!! $errors->first('Name', '<span class="help-block">:message</span>') !!}
+                        </div>
+                    {!! Form::close() !!}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Create</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop
