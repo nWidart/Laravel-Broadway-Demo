@@ -27,6 +27,11 @@ class PartsController extends Controller
         $this->readModelPartRepository = $readModelPartRepository;
     }
 
+    public function index()
+    {
+        return view('parts::index');
+    }
+
     public function manufacture()
     {
         $partId = PartId::generate();
