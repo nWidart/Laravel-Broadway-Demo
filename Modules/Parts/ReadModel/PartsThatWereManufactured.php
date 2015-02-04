@@ -8,11 +8,11 @@ class PartsThatWereManufactured implements ReadModelInterface, SerializableInter
     /**
      * @var int
      */
-    private $manufacturedPartId;
+    public $manufacturedPartId;
     /**
      * @var string
      */
-    private $manufacturerName;
+    public $manufacturerName;
 
     public function __construct($manufacturedPartId, $manufacturerName)
     {
