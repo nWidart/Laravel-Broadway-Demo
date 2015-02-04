@@ -22,6 +22,12 @@ class PartsController extends Controller
      */
     private $readModelPartRepository;
 
+    /**
+     * Injecting the command bus to send commands
+     * And a read model to list all manufactured parts
+     * @param CommandBusInterface $commandBus
+     * @param ReadModelPartRepository $readModelPartRepository
+     */
     public function __construct(
         CommandBusInterface $commandBus,
         ReadModelPartRepository $readModelPartRepository
