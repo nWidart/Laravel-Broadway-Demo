@@ -2,6 +2,7 @@
 
 use Broadway\CommandHandling\CommandBusInterface;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Modules\Parts\Commands\ManufacturePartCommand;
@@ -29,6 +30,11 @@ class PartsController extends Controller
         $this->readModelPartRepository = $readModelPartRepository;
     }
 
+    /**
+     * Display a listing of all the manufactured parts.
+     * This reads everything from the read model
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         $parts = $this->readModelPartRepository->findAll();
@@ -36,6 +42,11 @@ class PartsController extends Controller
         return view('parts::index', compact('parts'));
     }
 
+    /**
+     * Create a Part in the event store as well as in the read model
+     * @param Request $request
+     * @return Response
+     */
     public function store(Request $request)
     {
         $partId = PartId::generate();
