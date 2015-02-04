@@ -47,17 +47,6 @@ class PartsController extends Controller
         return Redirect::route('parts.index')->with('success', 'Part successfully created.');
     }
 
-    public function manufacture()
-    {
-        $partId = PartId::generate();
-        $manufacturerId = ManufacturerId::generate();
-
-        $command = new ManufacturePartCommand($partId, $manufacturerId, 'BMW');
-        $this->commandBus->dispatch($command);
-
-        dd('Part was stored in event store');
-    }
-
     public function renameManufacturer($partId, $name)
     {
         $partId = PartId::fromString($partId);
