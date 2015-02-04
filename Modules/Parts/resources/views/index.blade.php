@@ -21,7 +21,15 @@
             <?php foreach($parts as $part): ?>
                 <tr>
                     <td>{{ $part->manufacturedPartId  }}</td>
-                    <td>{{ $part->manufacturerName }}</td>
+                    <td>
+                        <a href="#" id="manufacturer-name"
+                           data-type="text"
+                           data-pk="{{ $part->manufacturedPartId  }}"
+                           data-url="{{ URL::route('parts.update') }}"
+                           data-title="Enter manufacturer name">
+                            {{ $part->manufacturerName }}
+                        </a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -50,4 +58,13 @@
             </div>
         </div>
     </div>
+@stop
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $.fn.editable.defaults.mode = 'inline';
+            $('#manufacturer-name').editable();
+        });
+    </script>
 @stop
