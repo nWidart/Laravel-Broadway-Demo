@@ -58,6 +58,21 @@ class PartsController extends Controller
         return Redirect::route('parts.index')->with('success', 'Part successfully created.');
     }
 
+    /**
+     * Update a part aggregate
+     * @param Request $request
+     * @return array
+     */
+    public function update(Request $request)
+    {
+        $partId = PartId::fromString($request->get('pk'));
+
+        $command = new RenameManufacturerForPartCommand($partId, $request->get('value'));
+        $this->commandBus->dispatch($command);
+
+        return ['updated' => true];
+    }
+
     public function renameManufacturer($partId, $name)
     {
         $partId = PartId::fromString($partId);
