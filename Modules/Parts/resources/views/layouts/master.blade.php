@@ -6,6 +6,7 @@
         <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/flatly/bootstrap.min.css" rel="stylesheet">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="{{ Module::asset('parts:css/main.css') }}" rel="stylesheet">
+        <link href="{{ Module::asset('parts:css/vendor/bootstrap-editable.css') }}" rel="stylesheet">
     </head>
     <body>
         @include('parts::partials.navigation')
@@ -20,6 +21,7 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="{{ Module::asset('parts:js/vendor/bootstrap-editable.min.js') }}"></script>
         @section('scripts')
         @show
     </body>
