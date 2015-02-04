@@ -61,11 +61,11 @@ php artisan serve
 
 ### [Event sourced child entity](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-child-entity)
 
-* Route: 
-    * Write: `/parts/manufacture`
-    * Read: `/parts/manufactured-parts/`
+* Route:
+    * Read: `/parts/index`
+    * Write: `create part` modal on `/parts/index`
     * Rename: `/parts/rename/uuid/newName`
-* Code: `Modules/Parts` 
+* Code: `Modules/Parts`
 * Tests: `Tests/Parts/`
 
 ### [Event sourced domain](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-domain-with-tests)
