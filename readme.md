@@ -62,9 +62,9 @@ php artisan serve
 ### [Event sourced child entity](https://github.com/qandidate-labs/broadway/tree/master/examples/event-sourced-child-entity)
 
 * Route:
-    * Read: `/parts/index`
-    * Write: `create part` modal on `/parts/index`
-    * Rename: `/parts/rename/uuid/newName`
+    * **Read**: `/parts/index`
+    * **Write**: `create part` modal on `/parts/index`
+    * **Rename** with inline editing on the `/parts/index` uri
 * Code: `Modules/Parts`
 * Tests: `Tests/Parts/`
 
