@@ -45,13 +45,6 @@ class PartsController extends Controller
         dd('Part was stored in event store');
     }
 
-    public function manufacturedParts()
-    {
-        $parts = $this->readModelPartRepository->findAll();
-
-        dd('read model', $parts);
-    }
-
     public function renameManufacturer($partId, $name)
     {
         $partId = PartId::fromString($partId);
