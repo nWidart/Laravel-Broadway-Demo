@@ -26,6 +26,11 @@ class PartServiceProvider extends ServiceProvider
         include_once __DIR__.'/Http/routes.php';
     }
 
+    public function boot()
+    {
+        $this->app['view']->addNamespace('parts', __DIR__.'/resources/views');
+    }
+
     /**
      * Bind repositories
      */
