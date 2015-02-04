@@ -78,4 +78,14 @@ class PartsController extends Controller
 
         return ['updated' => true];
     }
+
+    public function destroy(Request $request)
+    {
+        $partId = PartId::fromString($request->get('partId'));
+
+        // $command = new RemovePartCommand($partId);
+        // $this->commandBus->dispatch($command);
+
+        return Redirect::route('parts.index')->with('success', 'Part successfully deleted.');
+    }
 }

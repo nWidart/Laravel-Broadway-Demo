@@ -16,6 +16,7 @@
         <thead>
             <th>Part uuid</th>
             <th>Manufacturer Name</th>
+            <th>Actions</th>
         </thead>
         <tbody>
             <?php foreach($parts as $part): ?>
@@ -29,6 +30,14 @@
                            data-title="Enter manufacturer name">
                             {{ $part->manufacturerName }}
                         </a>
+                    </td>
+                    <td>
+                        {!! Form::open(['route' => 'parts.destroy', 'method' => 'delete']) !!}
+                            <input type="hidden" value="{{ $part->manufacturedPartId  }}" name="partId"/>
+                            <button class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        {!! Form::close() !!}
                     </td>
                 </tr>
             <?php endforeach; ?>
