@@ -37,9 +37,9 @@
                 <div class="modal-body">
                     {!! Form::open(['route' => 'parts.store', 'method' => 'post']) !!}
                         <div>
-                            {!! Form::label('name', 'Name:') !!}
-                            {!! Form::text('name', Input::old('name'), ['class' => 'form-control', 'placeholder' => 'Name']) !!}
-                            {!! $errors->first('Name', '<span class="help-block">:message</span>') !!}
+                            {!! Form::label('manufacturer-name', 'Manufacturer name:') !!}
+                            {!! Form::text('manufacturer-name', Input::old('manufacturer-name'), ['class' => 'form-control', 'placeholder' => 'Manufacturer name']) !!}
+                            {!! $errors->first('manufacturer-name', '<span class="help-block">:message</span>') !!}
                         </div>
                     {!! Form::close() !!}
                 </div>
