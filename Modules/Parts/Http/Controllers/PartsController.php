@@ -29,7 +29,9 @@ class PartsController extends Controller
 
     public function index()
     {
-        return view('parts::index');
+        $parts = $this->readModelPartRepository->findAll();
+
+        return view('parts::index', compact('parts'));
     }
 
     public function manufacture()
