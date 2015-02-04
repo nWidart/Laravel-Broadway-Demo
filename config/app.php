@@ -145,6 +145,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+        'Pingpong\Modules\ModulesServiceProvider',
         'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider',
         'Modules\Parts\PartServiceProvider',
         'Modules\Acme\AcmeServiceProvider',
