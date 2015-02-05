@@ -5,7 +5,7 @@ use Modules\Parts\Events\PartWasManufacturedEvent;
 
 class Part extends EventSourcedAggregateRoot
 {
-    private $id;
+    private $partId;
     private $manufacturer;
 
     /**
