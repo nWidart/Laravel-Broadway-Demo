@@ -1,28 +1,12 @@
 <?php namespace Modules\Parts\Entities;
 
 use Broadway\EventSourcing\EventSourcedEntity;
-use Doctrine\ORM\Mapping as ORM;
 use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="manufacturers")
- */
 class Manufacturer extends EventSourcedEntity
 {
-    /**
-     * @ORM\OneToMany(targetEntity="Modules\Parts\Entities\Part", mappedBy="manufacturer")
-     **/
     private $partId;
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="string")
-     */
     private $id;
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="string")
-     */
     private $manufacturerName;
 
     public function __construct($partId, $id, $manufacturerName)

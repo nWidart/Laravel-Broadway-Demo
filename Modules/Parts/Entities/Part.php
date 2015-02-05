@@ -1,23 +1,11 @@
 <?php namespace Modules\Parts\Entities;
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
-use Doctrine\ORM\Mapping as ORM;
 use Modules\Parts\Events\PartWasManufacturedEvent;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="parts")
- */
 class Part extends EventSourcedAggregateRoot
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="string")
-     */
     private $id;
-    /**
-     * @ORM\ManyToOne(targetEntity="Modules\Parts\Entities\Manufacturer", inversedBy="partId")
-     **/
     private $manufacturer;
 
     /**
