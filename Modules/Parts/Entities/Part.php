@@ -2,6 +2,7 @@
 
 use Broadway\EventSourcing\EventSourcedAggregateRoot;
 use Modules\Parts\Events\PartWasManufacturedEvent;
+use Modules\Parts\Events\PartWasRemovedEvent;
 
 class Part extends EventSourcedAggregateRoot
 {
@@ -40,7 +41,7 @@ class Part extends EventSourcedAggregateRoot
 
     public function remove()
     {
-        // $this->apply(new PartWasRemovedEvent($this->partId));
+        $this->apply(new PartWasRemovedEvent($this->partId));
     }
 
     public function applyPartWasManufacturedEvent(PartWasManufacturedEvent $event)
