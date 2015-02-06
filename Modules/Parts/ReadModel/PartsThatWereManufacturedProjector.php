@@ -4,6 +4,7 @@ use Assert\Assertion;
 use Broadway\ReadModel\Projector;
 use Modules\Parts\Events\PartManufacturerWasRenamedEvent;
 use Modules\Parts\Events\PartWasManufacturedEvent;
+use Modules\Parts\Events\PartWasRemovedEvent;
 use Modules\Parts\Repositories\ReadModelPartRepository;
 
 class PartsThatWereManufacturedProjector extends Projector
@@ -38,6 +39,10 @@ class PartsThatWereManufacturedProjector extends Projector
         $this->repository->save($readModel);
     }
 
+    /**
+     * @param $partId
+     * @return \Modules\Parts\ReadModel\PartsThatWereManufactured
+     */
     public function getReadModel($partId)
     {
         $partId = (string) $partId;
