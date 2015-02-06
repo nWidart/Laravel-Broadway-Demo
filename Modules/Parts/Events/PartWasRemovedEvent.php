@@ -7,7 +7,7 @@ class PartWasRemovedEvent implements SerializableInterface
     /**
      * @var
      */
-    private $partId;
+    public $partId;
 
     public function __construct($partId)
     {
