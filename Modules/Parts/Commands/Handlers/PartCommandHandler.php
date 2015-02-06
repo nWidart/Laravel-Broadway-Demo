@@ -47,6 +47,6 @@ class PartCommandHandler extends CommandHandler
     {
         $part = $this->repository->load($command->partId);
         $part->remove();
-        //$this->repository->add($part);
+        $this->repository->add($part);
     }
 }
