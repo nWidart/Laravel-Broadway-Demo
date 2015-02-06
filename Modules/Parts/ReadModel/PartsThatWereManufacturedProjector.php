@@ -39,6 +39,11 @@ class PartsThatWereManufacturedProjector extends Projector
         $this->repository->save($readModel);
     }
 
+    public function applyPartWasRemovedEvent(PartWasRemovedEvent $event)
+    {
+        $this->repository->remove($event->partId);
+    }
+
     /**
      * @param $partId
      * @return \Modules\Parts\ReadModel\PartsThatWereManufactured
