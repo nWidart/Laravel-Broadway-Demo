@@ -9,10 +9,10 @@
         <link href="{{ Module::asset('parts:css/vendor/bootstrap-editable.css') }}" rel="stylesheet">
     </head>
     <body>
-        @include('parts::partials.navigation')
+        @include('core::partials.navigation')
         <div class="container-fluid">
             <div class="row">
-                @include('parts::partials.sidebar')
+                @include('core::partials.sidebar')
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     @yield('content')
                 </div>

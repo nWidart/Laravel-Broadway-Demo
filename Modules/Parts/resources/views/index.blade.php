@@ -1,4 +1,4 @@
-@extends('parts::layouts.master')
+@extends('core::layouts.master')
 
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    @include('parts::partials.notifications')
+    @include('core::partials.notifications')
 
     <table class="table table-hover">
         <thead>
