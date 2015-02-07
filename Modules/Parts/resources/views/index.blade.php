@@ -19,7 +19,6 @@
             <th>Actions</th>
         </thead>
         <tbody>
-            {!! Form::open(['route' => 'parts.store', 'method' => 'post']) !!}
             <?php foreach($parts as $part): ?>
                 <tr>
                     <td>{{ $part->manufacturedPartId  }}</td>
@@ -42,7 +41,6 @@
                     </td>
                 </tr>
             <?php endforeach; ?>
-            {!! Form::close() !!}
         </tbody>
     </table>
 
@@ -53,19 +51,19 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Create a part</h4>
                 </div>
+                {!! Form::open(['route' => 'parts.store', 'method' => 'post']) !!}
                 <div class="modal-body">
-                    {!! Form::open(['route' => 'parts.store', 'method' => 'post']) !!}
                         <div>
                             {!! Form::label('manufacturer-name', 'Manufacturer name:') !!}
                             {!! Form::text('manufacturer-name', Input::old('manufacturer-name'), ['class' => 'form-control', 'placeholder' => 'Manufacturer name']) !!}
                             {!! $errors->first('manufacturer-name', '<span class="help-block">:message</span>') !!}
                         </div>
-                    {!! Form::close() !!}
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
                 </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
