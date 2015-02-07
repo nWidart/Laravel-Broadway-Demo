@@ -1,3 +1,3 @@
 <?php
 
-Route::get('/', 'Modules\Dashboard\Http\Controllers\DashboardController@index');
+Route::get('/', ['as' => 'dashboard.index', 'uses' => 'Modules\Dashboard\Http\Controllers\DashboardController@index']);
