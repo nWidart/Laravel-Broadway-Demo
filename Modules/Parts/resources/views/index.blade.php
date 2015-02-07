@@ -19,6 +19,7 @@
             <th>Actions</th>
         </thead>
         <tbody>
+            {!! Form::open(['route' => 'parts.store', 'method' => 'post']) !!}
             <?php foreach($parts as $part): ?>
                 <tr>
                     <td>{{ $part->manufacturedPartId  }}</td>
@@ -41,6 +42,7 @@
                     </td>
                 </tr>
             <?php endforeach; ?>
+            {!! Form::close() !!}
         </tbody>
     </table>
 
