@@ -24,12 +24,6 @@ git clone https://github.com/nWidart/Laravel-Broadway-Demo.git
 
 Edit the `config/database.php` file to suit your needs.
 
-### Publish configuration and migraitons
-
-```
-php artisan vendor:publish
-```
-
 ### Run the migrations
 
 ```
