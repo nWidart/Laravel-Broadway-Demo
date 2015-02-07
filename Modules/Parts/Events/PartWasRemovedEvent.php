@@ -1,6 +1,7 @@
 <?php namespace Modules\Parts\Events;
 
 use Broadway\Serializer\SerializableInterface;
+use Modules\Parts\Entities\PartId;
 
 class PartWasRemovedEvent implements SerializableInterface
 {
@@ -9,7 +10,7 @@ class PartWasRemovedEvent implements SerializableInterface
      */
     public $partId;
 
-    public function __construct($partId)
+    public function __construct(PartId $partId)
     {
         $this->partId = $partId;
     }
@@ -20,7 +21,9 @@ class PartWasRemovedEvent implements SerializableInterface
      */
     public static function deserialize(array $data)
     {
-        return new self($data['partId']);
+        $partId = PartId::fromString($data['partId']);
+
+        return new self($partId);
     }
 
     /**
@@ -28,6 +31,6 @@ class PartWasRemovedEvent implements SerializableInterface
      */
     public function serialize()
     {
-        return ['partId' => $this->partId];
+        return ['partId' => $this->partId->toString()];
     }
 }
