@@ -59,7 +59,7 @@ class PartsController extends Controller
         $partId = PartId::generate();
         $manufacturerId = ManufacturerId::generate();
 
-        $command = new ManufacturePartCommand($partId, $manufacturerId, $request->get('name'));
+        $command = new ManufacturePartCommand($partId, $manufacturerId, $request->get('manufacturer-name'));
         $this->commandBus->dispatch($command);
 
         return Redirect::route('parts.index')->with('success', 'Part successfully created.');
