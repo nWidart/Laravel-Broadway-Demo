@@ -2,7 +2,7 @@
 
 use Rhumsaa\Uuid\Uuid;
 
-class UuidIdentifier implements Identifier
+abstract class UuidIdentifier implements Identifier
 {
     /**
      * Generate a new Identifier
