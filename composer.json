@@ -8,8 +8,8 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "laravel/framework": "5.0.*@dev",
-    "illuminate/html": "5.0.*@dev",
+    "laravel/framework": "~5.0",
+    "laravelcollective/html": "~5.0",
     "pingpong/modules": "2.0.*@dev",
     "elasticsearch/elasticsearch": "~1.0",
     "nwidart/laravel-broadway": "~0.3"
