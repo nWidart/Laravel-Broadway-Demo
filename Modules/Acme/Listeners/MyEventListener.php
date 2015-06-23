@@ -1,14 +1,14 @@
 <?php namespace Modules\Acme\Listeners;
 
-use Broadway\Domain\DomainMessageInterface;
+use Broadway\Domain\DomainMessage;
 use Broadway\EventHandling\EventListenerInterface;
 
 class MyEventListener implements EventListenerInterface
 {
     /**
-     * @param DomainMessageInterface $domainMessage
+     * @param DomainMessage $domainMessage
      */
-    public function handle(DomainMessageInterface $domainMessage)
+    public function handle(DomainMessage $domainMessage)
     {
         dd('get a domain message', $domainMessage);
     }
