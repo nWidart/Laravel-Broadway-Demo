@@ -18,7 +18,7 @@ class ReplayPartsCommand extends Command
      * The console command description.
      * @var string
      */
-    protected $description = 'Rebuild the parts';
+    protected $description = 'Rebuild the parts until a specific date. Commands needs to be edited.';
     /**
      * @var EventStorePartRepository
      */
