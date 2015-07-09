@@ -9,6 +9,12 @@ use Modules\Parts\Repositories\EventStorePartRepository;
 class ReplayPartsCommand extends Command
 {
     /**
+     * Date until you want to rebuild the parts
+     * Edit this property
+     * @var string
+     */
+    protected $limitDate = '2015-01-30 20:00:00';
+    /**
      * The console command name.
      * @var string
      */
@@ -67,7 +73,7 @@ class ReplayPartsCommand extends Command
         $stream = $eventStore->load($id);
 
         foreach ($stream->getIterator() as $event) {
-            $limit = DateTime::fromString('2015-01-30 20:00:00');
+            $limit = DateTime::fromString($this->limitDate);
             $recordedOnDate = $event->getRecordedOn();
             if ($recordedOnDate->comesAfter($limit)) {
                 continue;
