@@ -145,10 +145,10 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+        'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider',
 		'Collective\Html\HtmlServiceProvider',
         'Pingpong\Modules\ModulesServiceProvider',
 		'Pingpong\Modules\Providers\BootstrapServiceProvider',
-        'Nwidart\LaravelBroadway\LaravelBroadwayServiceProvider',
         'Modules\Acme\AcmeServiceProvider',
 	],
 
