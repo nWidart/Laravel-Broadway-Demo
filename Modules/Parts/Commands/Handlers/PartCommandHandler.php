@@ -27,7 +27,7 @@ class PartCommandHandler extends CommandHandler
     protected function handleManufacturePartCommand(ManufacturePartCommand $command)
     {
         $part = Part::manufacture($command->partId, $command->manufacturerId, $command->manufacturerName);
-        $this->repository->add($part);
+        $this->repository->save($part);
     }
 
     /**
@@ -40,13 +40,13 @@ class PartCommandHandler extends CommandHandler
     {
         $part = $this->repository->load($command->partId);
         $part->renameManufacturer($command->manufacturerName);
-        $this->repository->add($part);
+        $this->repository->save($part);
     }
 
     protected function handleRemovePartCommand(RemovePartCommand $command)
     {
         $part = $this->repository->load($command->partId);
         $part->remove();
-        $this->repository->add($part);
+        $this->repository->save($part);
     }
 }
