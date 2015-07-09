@@ -198,7 +198,7 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
         'Module'    => 'Pingpong\Modules\Facades\Module',
-        'Form'    => 'Illuminate\Html\FormFacade',
+		'Form' => Collective\Html\FormFacade::class,
 	],
 
 ];
