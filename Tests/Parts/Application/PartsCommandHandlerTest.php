@@ -16,15 +16,10 @@ use Modules\Parts\Repositories\MysqlEventStorePartRepository;
 
 class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
 {
-    /**
-     * @var Version4Generator
-     */
-    private $generator;
 
     public function setUp()
     {
         parent::setUp();
-        $this->generator = new Version4Generator();
     }
 
     /**
