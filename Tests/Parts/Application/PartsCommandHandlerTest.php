@@ -47,8 +47,8 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
      */
     public function it_can_manufacture()
     {
-        $partId = $this->makeNewPartId();
-        $manufacturerId = $this->makeManufacturerId();
+        $partId = PartId::generate();
+        $manufacturerId = ManufacturerId::generate();
 
         $this->scenario
             ->withAggregateId($partId->toString())
@@ -97,25 +97,5 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
         $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
         return $app;
-    }
-
-    /**
-     * @return \Modules\Core\Domain\Identifier
-     */
-    private function makeNewPartId()
-    {
-        $id = PartId::generate();
-
-        return PartId::fromString($id);
-    }
-
-    /**
-     * @return \Modules\Core\Domain\Identifier
-     */
-    private function makeManufacturerId()
-    {
-        $id = ManufacturerId::generate();
-
-        return ManufacturerId::fromString($id);
     }
 }
