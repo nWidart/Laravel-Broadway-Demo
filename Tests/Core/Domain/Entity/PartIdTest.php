@@ -6,19 +6,13 @@ use Rhumsaa\Uuid\Uuid;
 
 class PartIdTest extends PHPUnit_Framework_TestCase
 {
-    public function should_require_instance_of_uuid()
-    {
-        $this->setExpectedException('Exception');
-
-        $id = new PartId();
-    }
 
     /** @test */
     public function should_create_new_id()
     {
         $id = new PartId(Uuid::uuid4());
 
-        $this->assertInstanceOf('Modules\Parts\Entities\PartId', $id);
+        $this->assertInstanceOf(\Modules\Parts\Entities\PartId::class, $id);
     }
 
     /** @test */
@@ -26,7 +20,7 @@ class PartIdTest extends PHPUnit_Framework_TestCase
     {
         $id = PartId::generate();
 
-        $this->assertInstanceOf('Modules\Parts\Entities\PartId', $id);
+        $this->assertInstanceOf(\Modules\Parts\Entities\PartId::class, $id);
     }
 
     /** @test */
@@ -34,7 +28,7 @@ class PartIdTest extends PHPUnit_Framework_TestCase
     {
         $id = PartId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
 
-        $this->assertInstanceOf('Modules\Parts\Entities\PartId', $id);
+        $this->assertInstanceOf(\Modules\Parts\Entities\PartId::class, $id);
     }
 
     /** @test */

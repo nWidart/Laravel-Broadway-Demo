@@ -1,5 +1,6 @@
 <?php namespace Modules\Parts;
 
+use Doctrine\DBAL\Connection;
 use Illuminate\Support\ServiceProvider;
 use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Console\ReplayPartsCommand;
@@ -36,11 +37,11 @@ class PartServiceProvider extends ServiceProvider
      */
     private function bindEventSourcedRepositories()
     {
-        $this->app->bind('Modules\Parts\Repositories\EventStorePartRepository', function ($app) {
-            $eventStore = $app['Broadway\EventStore\EventStoreInterface'];
-            $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+        $this->app->bind(\Modules\Parts\Repositories\EventStorePartRepository::class, function ($app) {
+            $eventStore = $app[\Broadway\EventStore\EventStoreInterface::class];
+            $eventBus = $app[\Broadway\EventHandling\EventBusInterface::class];
 
-            return new MysqlEventStorePartRepository($eventStore, $eventBus, $app['Doctrine\DBAL\Connection']);
+            return new MysqlEventStorePartRepository($eventStore, $eventBus, $app[Connection::class]);
         });
     }
 
@@ -49,8 +50,8 @@ class PartServiceProvider extends ServiceProvider
      */
     private function bindReadModelRepositories()
     {
-        $this->app->bind('Modules\Parts\Repositories\ReadModelPartRepository', function ($app) {
-            $serializer = $app['Broadway\Serializer\SerializerInterface'];
+        $this->app->bind(\Modules\Parts\Repositories\ReadModelPartRepository::class, function ($app) {
+            $serializer = $app[\Broadway\Serializer\SerializerInterface::class];
 
             return new ElasticSearchReadModelPartRepository($app['Elasticsearch'], $serializer);
         });
@@ -61,7 +62,7 @@ class PartServiceProvider extends ServiceProvider
      */
     private function registerCommandSubscribers()
     {
-        $partCommandHandler = new PartCommandHandler($this->app['Modules\Parts\Repositories\EventStorePartRepository']);
+        $partCommandHandler = new PartCommandHandler($this->app[\Modules\Parts\Repositories\EventStorePartRepository::class]);
 
         $this->app['laravelbroadway.command.registry']->subscribe([
             $partCommandHandler
@@ -73,7 +74,7 @@ class PartServiceProvider extends ServiceProvider
      */
     private function registerEventSubscribers()
     {
-        $partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app['Modules\Parts\Repositories\ReadModelPartRepository']);
+        $partsThatWereManfacturedProjector = new PartsThatWereManufacturedProjector($this->app[\Modules\Parts\Repositories\ReadModelPartRepository::class]);
 
         $this->app['laravelbroadway.event.registry']->subscribe([
             $partsThatWereManfacturedProjector
@@ -82,9 +83,9 @@ class PartServiceProvider extends ServiceProvider
 
     private function registerConsoleCommands()
     {
-        $this->app->bindShared('command.asgard.replay.parts', function ($app) {
-            $eventStorePartRepository = $app['Modules\Parts\Repositories\EventStorePartRepository'];
-            $eventBus = $app['Broadway\EventHandling\EventBusInterface'];
+        $this->app->singleton('command.asgard.replay.parts', function ($app) {
+            $eventStorePartRepository = $app[\Modules\Parts\Repositories\EventStorePartRepository::class];
+            $eventBus = $app[\Broadway\EventHandling\EventBusInterface::class];
             return new ReplayPartsCommand($eventStorePartRepository, $eventBus);
         });
         $this->commands([

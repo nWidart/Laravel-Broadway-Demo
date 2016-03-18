@@ -5,6 +5,7 @@ use Broadway\CommandHandling\Testing\CommandHandlerScenarioTestCase;
 use Broadway\EventHandling\EventBusInterface;
 use Broadway\EventStore\EventStoreInterface;
 use Broadway\UuidGenerator\Rfc4122\Version4Generator;
+use Doctrine\DBAL\Connection;
 use Modules\Parts\Commands\Handlers\PartCommandHandler;
 use Modules\Parts\Commands\ManufacturePartCommand;
 use Modules\Parts\Commands\RenameManufacturerForPartCommand;
@@ -32,7 +33,7 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
     protected function createCommandHandler(EventStoreInterface $eventStore, EventBusInterface $eventBus)
     {
         $app = $this->createApplication();
-        $repository = new MysqlEventStorePartRepository($eventStore, $eventBus, $app['Doctrine\DBAL\Connection']);
+        $repository = new MysqlEventStorePartRepository($eventStore, $eventBus, $app[Connection::class]);
 
         return new PartCommandHandler($repository);
     }
@@ -89,7 +90,7 @@ class PartsCommandHandlerTest extends CommandHandlerScenarioTestCase
     {
         $app = require __DIR__ . '/../../../bootstrap/app.php';
 
-        $app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
+        $app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
         return $app;
     }

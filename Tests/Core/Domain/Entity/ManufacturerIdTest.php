@@ -5,19 +5,12 @@ use Rhumsaa\Uuid\Uuid;
 
 class ManufacturerIdTest extends \PHPUnit_Framework_TestCase
 {
-    public function should_require_instance_of_uuid()
-    {
-        $this->setExpectedException('Exception');
-
-        $id = new ManufacturerId();
-    }
-
     /** @test */
     public function should_create_new_id()
     {
         $id = new ManufacturerId(Uuid::uuid4());
 
-        $this->assertInstanceOf('Modules\Parts\Entities\ManufacturerId', $id);
+        $this->assertInstanceOf(\Modules\Parts\Entities\ManufacturerId::class, $id);
     }
 
     /** @test */
@@ -25,7 +18,7 @@ class ManufacturerIdTest extends \PHPUnit_Framework_TestCase
     {
         $id = ManufacturerId::generate();
 
-        $this->assertInstanceOf('Modules\Parts\Entities\ManufacturerId', $id);
+        $this->assertInstanceOf(\Modules\Parts\Entities\ManufacturerId::class, $id);
     }
 
     /** @test */
@@ -33,7 +26,7 @@ class ManufacturerIdTest extends \PHPUnit_Framework_TestCase
     {
         $id = ManufacturerId::fromString('d16f9fe7-e947-460e-99f6-2d64d65f46bc');
 
-        $this->assertInstanceOf('Modules\Parts\Entities\ManufacturerId', $id);
+        $this->assertInstanceOf(\Modules\Parts\Entities\ManufacturerId::class, $id);
     }
 
     /** @test */
