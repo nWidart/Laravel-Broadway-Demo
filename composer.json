@@ -24,7 +24,7 @@
     "laravel/framework": "5.2.*",
     "nwidart/laravel-broadway": "dev-develop",
     "pingpong/modules": "~2.2",
-    "elasticsearch/elasticsearch": "~1.0"
+    "elasticsearch/elasticsearch": "~2.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
