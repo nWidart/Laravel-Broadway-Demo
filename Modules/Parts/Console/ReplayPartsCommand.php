@@ -3,6 +3,7 @@
 use Broadway\Domain\DateTime;
 use Broadway\Domain\DomainEventStream;
 use Broadway\EventHandling\EventBusInterface;
+use Broadway\EventStore\EventStoreInterface;
 use Illuminate\Console\Command;
 use Modules\Parts\Repositories\EventStorePartRepository;
 
@@ -11,41 +12,55 @@ class ReplayPartsCommand extends Command
     /**
      * Date until you want to rebuild the parts
      * Edit this property
+     *
      * @var string
      */
-    protected $limitDate = '2015-01-30 20:00:00';
+    protected $limitDate = '2015-04-01 20:00:00';
+
+
     /**
      * The console command name.
+     *
      * @var string
      */
     protected $name = 'asgard:parts';
 
     /**
      * The console command description.
+     *
      * @var string
      */
     protected $description = 'Rebuild the parts until a specific date. Commands needs to be edited.';
-    /**
-     * @var EventStorePartRepository
-     */
+
+    /** @var EventStorePartRepository */
     private $eventStore;
-    private $eventBuffer;
+
+    /** @var array $eventBuffer */
+    private $eventBuffer = [];
+
+    /** @var int $maxBufferSize */
     private $maxBufferSize = 20;
-    /**
-     * @var EventBusInterface
-     */
+
+    /** @var EventBusInterface */
     private $eventBus;
 
+    /**
+     * ReplayPartsCommand constructor.
+     *
+     * @param \Modules\Parts\Repositories\EventStorePartRepository $eventStore
+     * @param \Broadway\EventHandling\EventBusInterface $eventBus
+     */
     public function __construct(EventStorePartRepository $eventStore, EventBusInterface $eventBus)
     {
         parent::__construct();
 
         $this->eventStore = $eventStore;
-        $this->eventBus = $eventBus;
+        $this->eventBus   = $eventBus;
     }
 
     /**
      * Execute the console command.
+     *
      * @return mixed
      */
     public function handle()
@@ -58,6 +73,9 @@ class ReplayPartsCommand extends Command
         $this->comment('Finished rebuilding.');
     }
 
+    /**
+     * @param $streamIds
+     */
     private function process($streamIds)
     {
         foreach ($streamIds as $id) {
@@ -66,14 +84,17 @@ class ReplayPartsCommand extends Command
         }
     }
 
+    /**
+     * @param $id
+     */
     private function rebuildStream($id)
     {
-        /** @var \Broadway\EventStore\EventStoreInterface $eventStore */
-        $eventStore = app('Broadway\EventStore\EventStoreInterface');
-        $stream = $eventStore->load($id);
+        /** @var EventStoreInterface $eventStore */
+        $eventStore = app(EventStoreInterface::class);
+        $stream     = $eventStore->load($id);
 
         foreach ($stream->getIterator() as $event) {
-            $limit = DateTime::fromString($this->limitDate);
+            $limit          = DateTime::fromString($this->limitDate);
             $recordedOnDate = $event->getRecordedOn();
             if ($recordedOnDate->comesAfter($limit)) {
                 continue;
@@ -83,26 +104,35 @@ class ReplayPartsCommand extends Command
         }
     }
 
+
     private function publishEvents()
     {
         $this->eventBus->publish(new DomainEventStream($this->eventBuffer));
         $this->clearEventBuffer();
     }
 
+    /**
+     * @param $event
+     */
     private function addEventToBuffer($event)
     {
         $this->eventBuffer[] = $event;
     }
 
+    /**
+     * @return bool
+     */
     private function bufferLimitReached()
     {
         return count($this->eventBuffer) > $this->maxBufferSize;
     }
 
+
     private function clearEventBuffer()
     {
         $this->eventBuffer = [];
     }
+
 
     private function guardBufferNotFull()
     {

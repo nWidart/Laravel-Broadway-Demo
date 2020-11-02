@@ -1,6 +1,7 @@
 <?php namespace Modules\Parts\Events;
 
 use Broadway\Serializer\SerializableInterface;
+use Modules\Core\Domain\Identifier;
 use Modules\Parts\Entities\PartId;
 
 class PartWasManufacturedEvent implements SerializableInterface
@@ -9,7 +10,7 @@ class PartWasManufacturedEvent implements SerializableInterface
     public $manufacturerId;
     public $manufacturerName;
 
-    public function __construct(PartId $partId, $manufacturerId, $manufacturerName)
+    public function __construct(Identifier $partId, $manufacturerId, $manufacturerName)
     {
         $this->partId = $partId;
         $this->manufacturerId = $manufacturerId;
